@@ -43,7 +43,7 @@
             <a href="/pokepocketferramentas/calculadora/" data-goatcounter-click="menu-pas-calculadora" data-goatcounter-title="menu-pas-calculadora"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M8.5 6.5h7M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M8.5 18h.01M12 18h.01M15.5 14.5V18"/></svg></span><span class="ferr-txt"><b>Calculadora Pokémon</b><small>Nota, score e preço</small></span></a>
             <a href="/pokepocketferramentas/nivel/" data-goatcounter-click="menu-pas-nivel" data-goatcounter-title="menu-pas-nivel"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 20.5 9 9.5l3.6 5.6 2.4-3.4 6.5 8.8z"/><path d="M15 11.7V3.5l4.5 1.8L15 7.1"/></svg></span><span class="ferr-txt"><b>Nível</b><small>Quando você chega lá</small></span></a>
             <a href="/pokepocketferramentas/tier/" data-goatcounter-click="menu-pas-tier" data-goatcounter-title="menu-pas-tier"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5h8V9a4 4 0 0 1-8 0z"/><path d="M8 5.5H5a3 3 0 0 0 3.2 4M16 5.5h3a3 3 0 0 1-3.2 4M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/></svg></span><span class="ferr-txt"><b>Tier PvP</b><small>O meta do ranqueado, todo dia</small></span></a>
-            <a href="/pokepocketferramentas/posicionamento/" data-goatcounter-click="menu-pas-posicionamento" data-goatcounter-title="menu-pas-posicionamento"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 12h17"/><circle cx="12" cy="12" r="3"/><path d="M8 7.5h.01M16 7.5h.01M8 16.5h.01M12 16.5h.01M16 16.5h.01"/></svg></span><span class="ferr-txt"><b>Posicionamento</b><small>Formações reais do top mensal</small></span></a>
+            <a href="/pokepocketferramentas/posicionamento/" data-goatcounter-click="menu-pas-posicionamento" data-goatcounter-title="menu-pas-posicionamento"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 12h17"/><circle cx="12" cy="12" r="3"/><path d="M8 7.5h.01M16 7.5h.01M8 16.5h.01M12 16.5h.01M16 16.5h.01"/></svg></span><span class="ferr-txt"><b>Posicionamento<span class="selo-novo">novo</span></b><small>Formações reais do top mensal</small></span></a>
             <a href="/pokepocketferramentas/passivas/" aria-current="page"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></span><span class="ferr-txt"><b>Passivas<span class="selo-novo">novo</span></b><small>O que cada passiva faz no PvP</small></span></a>
           </div>
         </div>
@@ -67,7 +67,7 @@
   </header>
 
   <main>
-    <section class="abre envolve">
+    <section class="abre envolve pas-abre">
       <h1>Passivas <span class="shiny">do PvP</span></h1>
       <p>Cada pokémon tem uma passiva pelo tipo. Escolha uma e veja o que ela faz no tabuleiro.</p>
       <ul class="pas-quando" id="pas-quando"></ul>
@@ -75,32 +75,87 @@
 
     <div class="envolve largo">
       <section class="pas" aria-label="Passivas do PvP">
-        <article class="pas-palco" id="pas-palco" aria-live="polite">
-          <header class="pas-cab" id="pas-cab"></header>
-          <div class="pas-tab-caixa">
-            <div class="pas-tab" id="pas-tab" aria-hidden="true"></div>
-            <p class="pas-passo" id="pas-passo"></p>
-            <div class="pas-tab-pe"><span id="pas-legenda-tab"></span><button type="button" class="pas-repetir" id="pas-repetir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4 4.5v4h4"/></svg>Repetir</button></div>
-          </div>
-          <dl class="pas-fatos" id="pas-fatos"></dl>
-          <section class="pas-quem" id="pas-quem"></section>
-        </article>
         <aside class="pas-lista" aria-label="Lista de passivas">
+          <div class="pas-busca">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+            <input id="pas-busca" type="search" placeholder="Qual a passiva do seu pokémon?" autocomplete="off" spellcheck="false" aria-label="Buscar pokémon pelo nome" aria-controls="pas-achados" />
+            <div class="pas-achados" id="pas-achados" role="listbox" hidden></div>
+          </div>
           <div class="pas-filtros" role="group" aria-label="Filtrar">
             <button type="button" data-filtro="todas">Todas</button>
             <button type="button" data-filtro="inimigo">Afetam o inimigo</button>
             <button type="button" data-filtro="time">Ajudam o time</button>
           </div>
           <div class="pas-linhas" id="pas-linhas"></div>
-          <div class="pas-ciclo">
-            <h3>Como funciona</h3>
-            <p><b>Início:</b> vale a luta toda, desde o começo.</p>
-            <p><b>Ciclo:</b> usar todos os golpes do moveset desde a última vez (o Z-Move e a Investida não contam).</p>
-            <p><b>Alvo:</b> no começo, o inimigo mais perto em casas; no fim de cada ciclo, quem ele está atacando.</p>
-          </div>
+          <button type="button" class="pas-como" id="pas-como-abrir" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.2-2.4 3.6M12 17h.01"/></svg>Como funcionam gatilho e alvo</button>
         </aside>
+        <article class="pas-palco" id="pas-palco" aria-live="polite">
+          <header class="pas-topo">
+            <div class="pas-cab" id="pas-cab"></div>
+            <div class="pas-acoes">
+              <button type="button" class="pas-bt" id="pas-som" aria-pressed="false" title="Ligar som"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="on" d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/><path class="off" d="m16 9.5 5 5M21 9.5l-5 5"/></svg><span>Som</span></button>
+            </div>
+          </header>
+          <div class="pas-palco-corpo">
+            <div class="pas-tab-caixa">
+              <div class="pas-tab" id="pas-tab" aria-hidden="true"></div>
+              <div class="pas-carga" id="pas-carga" role="status"><span class="pas-carga-bola" aria-hidden="true"></span><b>Carregando…</b><i><em></em></i></div>
+              <p class="pas-passo" id="pas-passo"></p>
+              <p class="pas-legenda-tab" id="pas-legenda-tab"></p>
+            </div>
+            <div class="pas-info">
+              <dl class="pas-fatos" id="pas-fatos"></dl>
+              <section class="pas-quem" id="pas-quem"></section>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
+
+
+    <dialog class="pas-como-pop" id="pas-como" aria-labelledby="pas-como-tit">
+      <div class="pcp-topo">
+        <h2 id="pas-como-tit">Como as passivas funcionam</h2>
+        <button type="button" class="pcp-fechar" id="pas-como-fechar" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <h3 class="pcp-sec">Quando disparam</h3>
+      <div class="pcp-gatilhos">
+        <section class="pcp-card g-inicio">
+          <div class="pcp-card-cab"><span class="pcp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span><b>Início</b></div>
+          <p>Liga no começo e vale a luta toda.</p>
+          <div class="pcp-linha-tempo"><i class="cheio"></i></div>
+        </section>
+        <section class="pcp-card g-ciclo">
+          <div class="pcp-card-cab"><span class="pcp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-13.7 5.6M4 12a8 8 0 0 1 13.7-5.6"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span><b>Ciclo</b></div>
+          <p>No começo e a cada ciclo.</p>
+          <div class="pcp-golpes"><span>Golpe 1</span><span>Golpe 2</span><span>Golpe 3</span><em>= 1 ciclo</em></div>
+          <small>Z-Move e Investida não contam.</small>
+        </section>
+        <section class="pcp-card g-cura">
+          <div class="pcp-card-cab"><span class="pcp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.3-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.7 12 20 12 20z"/><path d="M12 11v4M10 13h4"/></svg></span><b>HP 50%</b></div>
+          <p>Ele ou aliado (BST até 500) cai a 50% do HP.</p>
+          <div class="pcp-hp"><i></i><span>50%</span></div>
+          <small>Gatilho do Recover.</small>
+        </section>
+      </div>
+      <h3 class="pcp-sec">Em quem acerta</h3>
+      <div class="pcp-alvos">
+        <section class="pcp-alvo">
+          <div class="pcp-mini" aria-hidden="true"><span class="ini"></span><span class="ini"></span><span class="ini alvo"></span><span class="ini"></span><span class="meio"></span><span class="nos"></span><span class="nos dono"></span><span class="nos"></span><span class="nos"></span></div>
+          <div><b>No começo da luta</b><p>O inimigo mais perto em casas.</p></div>
+        </section>
+        <section class="pcp-alvo">
+          <div class="pcp-mini" aria-hidden="true"><span class="ini alvo"></span><span class="ini"></span><span class="ini"></span><span class="ini"></span><span class="meio"></span><span class="nos"></span><span class="nos"></span><span class="nos dono atacando"></span><span class="nos"></span></div>
+          <div><b>No fim de cada ciclo</b><p>Quem ele está atacando.</p></div>
+        </section>
+      </div>
+      <ul class="pcp-notas">
+        <li><span>💗</span>Charm mira o inimigo mais longe.</li>
+        <li><span>⛰️</span>As de Início não escolhem alvo.</li>
+        <li><span>🕳️</span>Dig protege o próprio pokémon.</li>
+        <li><span>📏</span>Rain Dance e Recover: aliados de BST até 500.</li>
+      </ul>
+    </dialog>
 
     <section class="final">
       <p class="rodape">Projeto de fã, sem vínculo com o Pokéidle<br />Esta página conta visitas de forma anônima (GoatCounter): sem cookies e sem guardar o seu IP.</p>
