@@ -77,6 +77,20 @@
     <div class="envolve largo">
       <section class="pas" aria-label="Passivas do PvP">
         <aside class="pas-lista" aria-label="Lista de passivas">
+          <div class="pas-modos" role="group" aria-label="Modo">
+            <button type="button" data-modo="passivas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8z"/></svg>Passivas</button>
+            <button type="button" data-modo="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2.8 19.5c.6-3.2 2.6-5 5.2-5s4.6 1.8 5.2 5M10.8 19.5c.6-3.2 2.6-5 5.2-5s4.6 1.8 5.2 5"/></svg>Monte seu time</button>
+          </div>
+          <section class="pt-lado" aria-label="Seu time">
+            <div class="pas-busca">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <input id="pt-busca" type="search" placeholder="Adicionar pokémon ao time" autocomplete="off" spellcheck="false" aria-label="Adicionar pokémon ao time" />
+              <div class="pas-achados" id="pt-achados" role="listbox" hidden></div>
+            </div>
+            <div class="pt-cab"><b>Seu time</b><span id="pt-n"></span><button type="button" id="pt-exemplo">Exemplo</button><button type="button" id="pt-limpar">Limpar</button></div>
+            <div class="pt-lista" id="pt-lista"></div>
+            <p class="pt-dica">Toque numa peça e depois numa casa para mover. Megas não têm passiva.</p>
+          </section>
           <div class="pas-busca">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
             <input id="pas-busca" type="search" placeholder="Qual a passiva do seu pokémon?" autocomplete="off" spellcheck="false" aria-label="Buscar pokémon pelo nome" aria-controls="pas-achados" />
@@ -107,6 +121,7 @@
             <div class="pas-info">
               <dl class="pas-fatos" id="pas-fatos"></dl>
               <section class="pas-quem" id="pas-quem"></section>
+              <section class="pas-time-info" id="pas-time-info"></section>
             </div>
           </div>
         </article>
