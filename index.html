@@ -21,93 +21,201 @@
   <script>document.documentElement.classList.add('sem-vt'); document.documentElement.classList.add('so-ferr'); document.documentElement.dataset.isolado = '/pokepocketferramentas/'</script>
   <link rel="stylesheet" href="calc.css" />
   <style>
-    .inicio-abre { padding: 28px 0 8px; }
+    .inicio-abre { padding: 24px 0 4px; }
     .inicio-abre h1 { font-size: clamp(34px, 4.4vw, 52px); }
     .inicio-abre p { font-size: 16.5px; }
-    .fatos { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+    .fatos { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
     .fatos li { display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px; border-radius: 999px; font-size: 13.5px; font-weight: 800; color: var(--suave); background: rgba(21, 11, 16, 0.62); border: 1px solid rgba(255, 233, 163, 0.14); }
     .fatos svg { width: 16px; height: 16px; color: var(--ouro); }
-    .cartoes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 30px; }
-    .cartao-ferr { display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 10px; min-width: 0; padding: 22px 22px 20px; border-radius: var(--raio); text-decoration: none; color: var(--tinta); background: linear-gradient(180deg, #28161f, #150b10); border: 1px solid rgba(255, 233, 163, 0.14); box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 246, 239, 0.05); transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s, box-shadow 0.25s; }
-    .cartao-ferr:hover, .cartao-ferr:focus-visible { outline: none; transform: translateY(-3px); border-color: rgba(255, 211, 77, 0.5); box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 211, 77, 0.2), inset 0 1px 0 rgba(255, 246, 239, 0.06); }
-    .cartao-cab { display: flex; align-items: center; gap: 14px; }
-    .cartao-ic { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; color: #2a1a12; background: linear-gradient(180deg, #ffe9a3, #e2a93f); box-shadow: 0 3px 0 var(--ouro-esc); }
-    .cartao-ic svg { width: 26px; height: 26px; }
-    .cartao-ferr h2 { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.05; text-transform: uppercase; letter-spacing: 0.01em; color: #fff3df; }
-    .cartao-ferr .linha { color: var(--suave); font-size: 15.5px; font-weight: 700; }
-    .cartao-ferr ul { display: grid; gap: 6px; margin: 2px 0 0; padding: 0; list-style: none; align-content: start; }
-    .cartao-ferr li { display: flex; gap: 9px; font-size: 14.5px; color: var(--suave); }
-    .cartao-ferr li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 8px; border-radius: 50%; background: var(--ouro); box-shadow: 0 0 8px rgba(255, 211, 77, 0.6); }
-    .cartao-ir { display: inline-flex; align-items: center; gap: 6px; justify-self: start; margin-top: 6px; padding: 9px 16px; border-radius: 12px; font-weight: 900; font-size: 14px; color: #2a1a12; background: linear-gradient(180deg, #ffe9a3, #e2a93f); box-shadow: 0 3px 0 var(--ouro-esc); }
-    .cartao-ir svg { width: 16px; height: 16px; transition: transform 0.2s; }
-    .cartao-ferr:hover .cartao-ir svg { transform: translateX(3px); }
-    .cartao-cab { grid-row: 1; }
-    .cartao-ferr .linha { grid-row: 2; }
-    .cartao-ferr ul { grid-row: 4; }
-    .cartao-ir { grid-row: 5; }
-    .cartao-ferr.largo { grid-column: 1 / -1; }
-    @supports (grid-template-rows: subgrid) { .cartao-ferr { grid-row: span 5; grid-template-rows: subgrid; row-gap: 10px; } }
+    .atalhos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 6px; margin: 14px auto 0; font-size: 13.5px; font-weight: 800; color: var(--apagado); }
+    .atalhos span { margin-right: 4px; }
+    .atalhos a { padding: 4px 10px; border-radius: 999px; color: var(--suave); text-decoration: none; transition: color 0.2s, background-color 0.2s; }
+    .atalhos a:hover, .atalhos a:focus-visible { color: var(--ouro); background: rgba(255, 211, 77, 0.08); }
 
-    .previa { grid-row: 3; position: relative; height: 150px; min-width: 0; margin: 2px 0; border-radius: 16px; overflow: hidden; background: radial-gradient(ellipse 85% 90% at 50% 110%, rgba(114, 44, 63, 0.4), transparent 70%), rgba(8, 4, 6, 0.5); box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.1); }
+    .cr { --espia: 76px; --vao: 28px; --larg: min(1080px, calc(100% - 2 * var(--espia))); --ease: cubic-bezier(0.22, 1, 0.36, 1); --dur: 0.72s; position: relative; margin-top: 22px; }
+    .cr-abas-linha { display: none; justify-content: center; width: min(var(--largura), calc(100% - 32px)); margin: 0 auto 6px; }
+    .cr-abas { display: flex; gap: 6px; max-width: 100%; padding: 5px; border-radius: 18px; overflow-x: auto; scrollbar-width: none; background: rgba(21, 11, 16, 0.62); border: 1px solid rgba(255, 233, 163, 0.12); }
+    .cr-abas::-webkit-scrollbar { display: none; }
+    .cr-aba { position: relative; flex: none; display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 15px 0 12px; overflow: hidden; border: 0; border-radius: 13px; font-size: 14px; font-weight: 900; white-space: nowrap; color: var(--suave); background: transparent; transition: color 0.2s, background-color 0.2s; }
+    .cr-aba svg { flex: none; width: 19px; height: 19px; }
+    .cr-aba:hover { color: #fff3df; background: rgba(255, 233, 163, 0.07); }
+    .cr-aba:focus-visible { outline-offset: -2px; }
+    .cr-aba[aria-selected="true"] { color: #2a1a12; background: linear-gradient(180deg, #ffe9a3, #e2a93f); box-shadow: inset 0 -2px 0 rgba(125, 83, 19, 0.5); }
+    .cr-aba .tempo { position: absolute; left: 10px; right: 10px; bottom: 4px; height: 3px; border-radius: 2px; background: rgba(42, 26, 18, 0.16); opacity: 0; overflow: hidden; }
+    .cr-aba .tempo::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: #7d5313; transform: scaleX(0); transform-origin: left; }
+    .cr-aba[aria-selected="true"] .tempo { opacity: 1; }
+    .cr-aba .tempo.corre::after { animation: cr-tempo var(--tempo, 8s) linear forwards; }
+    .cr.pausado .cr-aba .tempo::after { animation-play-state: paused; }
+    .cr.parado .cr-aba .tempo { opacity: 0; }
+    @keyframes cr-tempo { to { transform: scaleX(1); } }
+
+    .cr-palco { position: relative; }
+    .cr-vista { position: relative; padding: 26px 0 30px; margin: -8px 0 -10px; overflow: hidden; }
+    .cr-trilho { display: grid; gap: 16px; column-gap: var(--vao); width: min(var(--largura), calc(100% - 32px)); margin: 0 auto; }
+    .cr-base { display: none; }
+
+    .cr-slide { position: relative; display: grid; grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr); align-items: center; gap: 34px; min-width: 0; padding: 22px 36px 22px 22px; border-radius: 26px; color: var(--tinta); background: linear-gradient(180deg, #28161f, #150b10); border: 1px solid rgba(255, 233, 163, 0.14); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 246, 239, 0.05); }
+    .cr-slide::before { content: ""; position: absolute; inset: -1px; z-index: 0; border-radius: inherit; pointer-events: none; box-shadow: 0 0 0 1px rgba(255, 211, 77, 0.32), 0 30px 70px -20px rgba(255, 170, 60, 0.16); opacity: 0; transition: opacity 0.5s; }
+    .cr-slide.ativo::before { opacity: 1; }
+    .cr-slide > * { position: relative; z-index: 1; }
+
+    .vitrine { position: relative; display: block; min-width: 0; container-type: inline-size; border-radius: 18px; text-decoration: none; color: inherit; -webkit-user-drag: none; }
+    .vitrine::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.1); transition: box-shadow 0.25s; }
+    .vitrine:hover::after { box-shadow: inset 0 0 0 1px rgba(255, 211, 77, 0.42); }
+    .sl-texto { display: grid; gap: 12px; align-content: center; justify-items: start; min-width: 0; }
+    .sl-num { font-family: var(--display); font-size: 14px; letter-spacing: 0.12em; color: var(--ouro); }
+    .sl-num i { font-style: normal; color: var(--apagado); }
+    .cartao-cab { display: flex; align-items: center; gap: 14px; }
+    .cartao-ic { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 15px; color: #2a1a12; background: linear-gradient(180deg, #ffe9a3, #e2a93f); box-shadow: 0 3px 0 var(--ouro-esc); }
+    .cartao-ic svg { width: 28px; height: 28px; }
+    .cr-slide h2 { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 2.7vw, 36px); line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; color: #fff3df; }
+    .cr-slide .linha { color: var(--suave); font-size: 17px; font-weight: 700; line-height: 1.4; }
+    .cr-slide ul { display: grid; gap: 7px; margin: 2px 0 4px; padding: 0; list-style: none; }
+    .cr-slide li { display: flex; gap: 10px; font-size: 15.5px; color: var(--suave); }
+    .cr-slide li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 9px; border-radius: 50%; background: var(--ouro); box-shadow: 0 0 8px rgba(255, 211, 77, 0.6); }
+    .cartao-ir { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 14px; font-weight: 900; font-size: 15px; text-decoration: none; color: #2a1a12; background: linear-gradient(180deg, #ffe9a3, #e2a93f); box-shadow: 0 4px 0 var(--ouro-esc), 0 0 26px rgba(255, 211, 77, 0.18); transition: transform 0.15s, box-shadow 0.15s; -webkit-user-drag: none; }
+    .cartao-ir svg { width: 17px; height: 17px; transition: transform 0.2s; }
+    .cartao-ir:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ouro-esc), 0 0 34px rgba(255, 211, 77, 0.32); }
+    .cartao-ir:hover svg { transform: translateX(3px); }
+    .cartao-ir:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ouro-esc); }
+
+    .cr-seta { display: grid; place-items: center; width: 52px; height: 52px; padding: 0; border-radius: 50%; color: var(--ouro); background: rgba(21, 11, 16, 0.86); border: 1px solid rgba(255, 233, 163, 0.28); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45); transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s var(--ease); }
+    .cr-seta svg { width: 22px; height: 22px; }
+    .cr-seta:hover { color: #2a1a12; background: #f2c25a; border-color: #ffe9a3; transform: scale(1.06); }
+    .cr-seta:active { transform: scale(0.96); }
+    .cr-pausa { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px 0 10px; border-radius: 999px; font-size: 13px; font-weight: 900; color: var(--suave); background: rgba(21, 11, 16, 0.62); border: 1px solid rgba(255, 233, 163, 0.14); transition: color 0.2s, border-color 0.2s; }
+    .cr-pausa:hover { color: #fff3df; border-color: rgba(255, 211, 77, 0.4); }
+    .cr-pausa svg { width: 16px; height: 16px; color: var(--ouro); }
+    .cr-pausa .ic-toca, .cr.parado .cr-pausa .ic-pausa { display: none; }
+    .cr.parado .cr-pausa .ic-toca { display: block; }
+    .cr-pausa b { font-family: var(--display); font-weight: 400; font-size: 14px; letter-spacing: 0.06em; color: #fff3df; }
+    .cr-pausa b i { font-style: normal; color: var(--apagado); }
+
+    .cr.pronto .cr-abas-linha { display: flex; }
+    .cr.pronto .cr-vista { touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 calc((100% - var(--larg)) / 2 * 0.72), #000 calc(100% - (100% - var(--larg)) / 2 * 0.72), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 calc((100% - var(--larg)) / 2 * 0.72), #000 calc(100% - (100% - var(--larg)) / 2 * 0.72), transparent 100%); }
+    .cr.pronto.arrastando .cr-vista { cursor: grabbing; }
+    .cr.pronto .cr-trilho { gap: 0; column-gap: var(--vao); width: var(--larg); }
+    .cr.pronto .cr-slide { grid-area: 1 / 1; transform-origin: 50% 50%; will-change: transform, opacity; transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease); }
+        .cr.pronto .previa > :not(.pv-tag) { translate: calc(var(--o, 0) * -30px) 0; transition: translate var(--dur) var(--ease); }
+    .cr.pronto .sl-texto { translate: calc(var(--o, 0) * 46px) 0; transition: translate var(--dur) var(--ease); }
+    .cr.pronto .sl-texto > * { opacity: 0.3; translate: 0 8px; transition: opacity 0.4s, translate 0.55s var(--ease), transform 0.15s, box-shadow 0.15s; }
+    .cr.pronto .ativo .sl-texto > * { opacity: 1; translate: none; transition-delay: calc(var(--k, 0) * 55ms + 140ms), calc(var(--k, 0) * 55ms + 140ms), 0s, 0s; }
+    .sl-texto > :nth-child(2) { --k: 1; } .sl-texto > :nth-child(3) { --k: 2; } .sl-texto > :nth-child(4) { --k: 3; } .sl-texto > :nth-child(5) { --k: 4; }
+    .cr.pronto .cr-base { display: flex; justify-content: center; align-items: center; gap: 14px; height: 48px; }
+    .cr.pronto .cr-ant, .cr.pronto .cr-prox { position: absolute; z-index: 5; top: calc(50% - 24px - 26px); }
+    .cr.pronto .cr-ant { left: max(8px, calc((100% - var(--larg)) / 2 - 26px)); }
+    .cr.pronto .cr-prox { right: max(8px, calc((100% - var(--larg)) / 2 - 26px)); }
+    .cr .sem-anim, .cr .sem-anim *, .cr.arrastando .cr-slide, .cr.arrastando .cr-slide * { transition: none !important; }
+
+    .previa { position: relative; height: 340px; min-width: 0; border-radius: 18px; overflow: hidden; background: radial-gradient(ellipse 85% 90% at 50% 110%, rgba(114, 44, 63, 0.4), transparent 70%), rgba(8, 4, 6, 0.5); }
     .previa[hidden] { display: none; }
     .previa.carregando::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255, 233, 163, 0.06) 50%, transparent 70%); background-size: 200% 100%; animation: pv-brilho 1.4s linear infinite; }
     @keyframes pv-brilho { from { background-position: 150% 0; } to { background-position: -50% 0; } }
-    .pv-tag { position: absolute; z-index: 3; top: 8px; right: 8px; padding: 1px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 900; line-height: 1.6; letter-spacing: 0.06em; text-transform: uppercase; color: var(--suave); background: rgba(21, 11, 16, 0.85); border: 1px solid rgba(255, 233, 163, 0.18); }
-    .previa img { image-rendering: pixelated; }
+    .pv-tag { position: absolute; z-index: 3; top: 12px; right: 12px; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 900; line-height: 1.6; letter-spacing: 0.06em; text-transform: uppercase; color: var(--suave); background: rgba(21, 11, 16, 0.85); border: 1px solid rgba(255, 233, 163, 0.18); }
+    .previa img { image-rendering: pixelated; -webkit-user-drag: none; }
+    .vazio { display: grid; place-items: center; height: 100%; padding: 20px; text-align: center; font-weight: 800; color: var(--apagado); }
 
-    .pv-calc { display: grid; grid-template-columns: 104px minmax(0, max-content); justify-content: center; align-items: center; gap: 12px; padding: 8px 14px 8px 6px; }
-    .pv-calc-arte { position: relative; display: grid; place-items: end center; height: 124px; }
-    .pv-calc-arte::before { content: ""; position: absolute; bottom: 12px; left: 50%; width: 84px; height: 18px; translate: -50% 0; border-radius: 50%; background: radial-gradient(ellipse at 50% 35%, #b06f78, #5a2735 72%); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 233, 163, 0.25); }
-    .pv-calc-arte img { position: relative; width: 92px; height: 92px; margin-bottom: 18px; object-fit: contain; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.6)); }
-    .pv-calc-arte i { position: absolute; top: 10px; right: 6px; font-style: normal; font-size: 14px; color: #ffe9a3; text-shadow: 0 0 8px rgba(255, 233, 163, 0.8); }
-    .pv-calc-info { display: grid; gap: 5px; min-width: 0; padding-top: 14px; }
-    .pv-nome { overflow: hidden; font-family: var(--display); font-size: 18px; line-height: 1.15; white-space: nowrap; text-overflow: ellipsis; color: #ffd86b; text-shadow: 0 2px 10px rgba(255, 211, 77, 0.25); }
-    .pv-nota { display: flex; align-items: baseline; gap: 4px; color: #ffb8dc; white-space: nowrap; }
-    .pv-nota b { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1; text-shadow: 0 0 14px rgba(255, 184, 220, 0.55); }
-    .pv-nota small { font-family: var(--display); font-size: 13px; color: var(--apagado); }
-    .pv-nota em { margin-left: 4px; font-style: normal; font-size: 11px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; }
-    .pv-linha { display: flex; align-items: center; gap: 6px; min-width: 0; font-size: 11.5px; font-weight: 800; color: var(--suave); white-space: nowrap; }
-    .pv-linha b { font-family: var(--display); font-weight: 400; font-size: 17px; line-height: 1; }
-    .pv-linha img { width: 16px; height: 16px; image-rendering: auto; }
-    .pv-barra { position: relative; flex: 1 1 auto; max-width: 96px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #f87171 0 30%, #fb923c 30% 50%, #facc15 50% 70%, #4ade80 70%); opacity: 0.9; }
-    .pv-barra::after { content: ""; position: absolute; top: 50%; left: calc(var(--p) * 100%); width: 10px; height: 10px; translate: -50% -50%; border-radius: 50%; background: #fff6ef; box-shadow: 0 0 0 2px #150b10; }
+    .pv-calc { display: grid; grid-template-columns: auto minmax(0, max-content); justify-content: center; align-items: center; gap: clamp(12px, 5cqw, 30px); padding: 12px 18px; }
+    .pv-calc-arte { --s: clamp(96px, 30cqw, 176px); position: relative; display: grid; place-items: end center; width: calc(var(--s) * 1.15); height: calc(var(--s) * 1.4); }
+    .pv-calc-arte::before { content: ""; position: absolute; bottom: calc(var(--s) * 0.12); left: 50%; width: calc(var(--s) * 0.95); height: calc(var(--s) * 0.2); translate: -50% 0; border-radius: 50%; background: radial-gradient(ellipse at 50% 35%, #b06f78, #5a2735 72%); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 233, 163, 0.25); }
+    .pv-calc-arte img { position: relative; width: var(--s); height: var(--s); margin-bottom: calc(var(--s) * 0.2); object-fit: contain; filter: drop-shadow(0 6px 5px rgba(0, 0, 0, 0.6)); }
+    .pv-calc-arte i { position: absolute; top: 8%; right: 4%; font-style: normal; font-size: calc(var(--s) * 0.14); color: #ffe9a3; text-shadow: 0 0 10px rgba(255, 233, 163, 0.85); }
+    .cr .ativo .pv-calc-arte img { animation: pv-flutua 3.4s ease-in-out infinite; }
+    .cr .ativo .pv-calc-arte i { animation: pv-pisca 2.2s ease-in-out infinite; }
+    @keyframes pv-flutua { 50% { transform: translateY(-7px); } }
+    @keyframes pv-pisca { 50% { opacity: 0.35; transform: scale(0.8) rotate(20deg); } }
+    .pv-calc-info { display: grid; gap: clamp(5px, 1.6cqw, 10px); min-width: 0; }
+    .pv-nome { overflow: hidden; font-family: var(--display); font-size: clamp(18px, 5.4cqw, 30px); line-height: 1.1; white-space: nowrap; text-overflow: ellipsis; color: #ffd86b; text-shadow: 0 2px 12px rgba(255, 211, 77, 0.25); }
+    .pv-nota { display: flex; align-items: baseline; gap: 5px; color: #ffb8dc; white-space: nowrap; }
+    .pv-nota b { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 8cqw, 46px); line-height: 1; text-shadow: 0 0 18px rgba(255, 184, 220, 0.55); }
+    .pv-nota small { font-family: var(--display); font-size: clamp(13px, 3cqw, 18px); color: var(--apagado); }
+    .pv-nota em { margin-left: 4px; font-style: normal; font-size: clamp(11px, 2.3cqw, 13px); font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; }
+    .pv-linha { display: flex; align-items: center; gap: 7px; min-width: 0; font-size: clamp(11.5px, 2.6cqw, 14.5px); font-weight: 800; color: var(--suave); white-space: nowrap; }
+    .pv-linha b { font-family: var(--display); font-weight: 400; font-size: clamp(17px, 4.2cqw, 24px); line-height: 1; }
+    .pv-linha img { width: 1.4em; height: 1.4em; image-rendering: auto; }
+    .pv-barra { position: relative; flex: 1 1 auto; max-width: clamp(80px, 26cqw, 150px); min-width: 56px; height: 7px; border-radius: 4px; background: linear-gradient(90deg, #f87171 0 30%, #fb923c 30% 50%, #facc15 50% 70%, #4ade80 70%); opacity: 0.9; }
+    .pv-barra::after { content: ""; position: absolute; top: 50%; left: calc(var(--p) * 100%); width: 12px; height: 12px; translate: -50% -50%; border-radius: 50%; background: #fff6ef; box-shadow: 0 0 0 2px #150b10; }
 
     .pv-nivel { background: radial-gradient(ellipse 60% 70% at 70% 10%, rgba(120, 70, 110, 0.25), transparent 70%), linear-gradient(180deg, #1a0e16, #0d070a); }
-    .pv-nivel svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .pv-nivel-txt { position: absolute; z-index: 2; top: 10px; left: 12px; display: grid; gap: 1px; }
-    .pv-nivel-txt small { font-size: 11.5px; font-weight: 800; color: var(--suave); }
-    .pv-nivel-txt b { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.05; color: #ffd34d; text-shadow: 0 2px 12px rgba(255, 211, 77, 0.35); }
+    .pv-nivel svg { position: absolute; top: 0; bottom: 0; left: -26px; width: calc(100% + 52px); height: 100%; }
+    .pv-nivel-txt { position: absolute; z-index: 2; top: clamp(12px, 4cqw, 24px); left: clamp(14px, 4.4cqw, 28px); display: grid; gap: 2px; }
+    .pv-nivel-txt small { font-size: clamp(11.5px, 2.7cqw, 15px); font-weight: 800; color: var(--suave); }
+    .pv-nivel-txt b { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 7.6cqw, 44px); line-height: 1.05; color: #ffd34d; text-shadow: 0 2px 14px rgba(255, 211, 77, 0.35); }
     .pv-trilha { stroke-dasharray: 2 6; animation: pv-anda 1.6s linear infinite; }
     @keyframes pv-anda { to { stroke-dashoffset: -16; } }
+    .cr .cr-slide:not(.ativo) .pv-trilha, .cr .cr-slide:not(.ativo) .previa.carregando::after { animation-play-state: paused; }
 
-    .pv-tier { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; }
-    .pv-faixa { --cor: #8b919c; display: grid; grid-template-columns: 46px minmax(0, 1fr); min-height: 0; border-radius: 11px; overflow: hidden; background: rgba(21, 11, 16, 0.72); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cor) 24%, rgba(255, 233, 163, 0.08)); }
-    .pv-faixa > b { display: grid; place-items: center; font-family: var(--display); font-weight: 400; font-size: 20px; line-height: 1; color: var(--cor); background: linear-gradient(160deg, color-mix(in srgb, var(--cor) 38%, #22131a), color-mix(in srgb, var(--cor) 14%, #150b10)); text-shadow: 0 2px 8px color-mix(in srgb, var(--cor) 45%, transparent); }
-    .pv-faixa > span { display: flex; align-items: center; gap: 4px; min-width: 0; padding: 0 6px; overflow: hidden; }
-    .pv-faixa img { flex: none; width: 34px; height: 34px; object-fit: contain; border-radius: 9px; background: radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--cor) 22%, transparent), transparent 70%); filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.55)); }
+    .pv-tier { display: grid; grid-template-rows: repeat(var(--n, 3), minmax(0, 1fr)); gap: clamp(6px, 1.8cqw, 10px); padding: clamp(8px, 2.6cqw, 14px); }
+    .pv-faixa { --cor: #8b919c; display: grid; grid-template-columns: clamp(44px, 13cqw, 74px) minmax(0, 1fr); min-height: 0; border-radius: clamp(11px, 3cqw, 16px); overflow: hidden; background: rgba(21, 11, 16, 0.72); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cor) 24%, rgba(255, 233, 163, 0.08)); }
+    .pv-faixa > b { display: grid; place-items: center; font-family: var(--display); font-weight: 400; font-size: clamp(19px, 5.6cqw, 32px); line-height: 1; color: var(--cor); background: linear-gradient(160deg, color-mix(in srgb, var(--cor) 38%, #22131a), color-mix(in srgb, var(--cor) 14%, #150b10)); text-shadow: 0 2px 8px color-mix(in srgb, var(--cor) 45%, transparent); }
+    .pv-faixa > span { display: flex; align-items: center; gap: clamp(3px, 1.2cqw, 8px); min-width: 0; padding: 0 clamp(5px, 1.6cqw, 10px); overflow: hidden; }
+    .pv-faixa img { flex: 0 1 auto; width: auto; height: 86%; max-height: 66px; aspect-ratio: 1; min-width: 0; object-fit: contain; border-radius: 10px; background: radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--cor) 22%, transparent), transparent 70%); filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.55)); }
 
-    .pv-pos { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 8px 12px 8px 8px; }
-    .pv-tab { flex: none; display: grid; grid-template-columns: repeat(8, 24px); grid-auto-rows: 24px; gap: 3px; padding: 6px; border-radius: 10px; background: radial-gradient(ellipse 75% 60% at 50% 50%, #3a1c2a 0, #22101a 55%, #10070c 100%); box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.2), inset 0 0 18px rgba(0, 0, 0, 0.7); }
+    .pv-pos { --cel: clamp(19px, calc((100cqw - 200px) / 8.7), 42px); display: flex; align-items: center; justify-content: center; gap: clamp(10px, 4.6cqw, 30px); padding: 10px 14px; }
+    .pv-tab { flex: none; display: grid; grid-template-columns: repeat(8, var(--cel)); grid-auto-rows: var(--cel); gap: clamp(2px, 0.7cqw, 4px); padding: clamp(6px, 1.6cqw, 10px); border-radius: clamp(10px, 2.4cqw, 14px); background: radial-gradient(ellipse 75% 60% at 50% 50%, #3a1c2a 0, #22101a 55%, #10070c 100%); box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.2), inset 0 0 18px rgba(0, 0, 0, 0.7); }
     .pv-casa { position: relative; border-radius: 4px; background: rgba(70, 48, 40, 0.5); background-image: linear-gradient(rgba(226, 169, 63, 0.12), rgba(226, 169, 63, 0.12)); box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.4); }
     .pv-casa.alt { background-color: rgba(58, 39, 33, 0.5); }
     .pv-casa.ocupada { background: #1b0f15; background-image: radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--t, #e2a93f) 30%, transparent), transparent 70%); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--t, #e2a93f) 85%, #fff3df), 0 2px 5px rgba(0, 0, 0, 0.6); }
     .pv-casa img { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); object-fit: contain; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.7)); }
-    .pv-pos-info { display: grid; justify-items: start; gap: 4px; min-width: 0; }
-    .pv-lugar { padding: 2px 10px; border-radius: 999px; font-family: var(--display); font-size: 18px; line-height: 1.3; color: #2a1a12; background: linear-gradient(180deg, #ffe9a3, #e2a93f); box-shadow: 0 2px 0 var(--ouro-esc); }
-    .pv-pos-info small { font-size: 11.5px; font-weight: 800; color: var(--apagado); text-transform: uppercase; letter-spacing: 0.05em; }
-    .pv-pos-info strong { max-width: 100%; overflow: hidden; font-size: 15px; font-weight: 900; color: #fff3df; white-space: nowrap; text-overflow: ellipsis; }
-    .pv-pos-info span { font-size: 12.5px; font-weight: 800; color: var(--suave); }
+    .pv-pos-info { display: grid; justify-items: start; gap: clamp(3px, 1.2cqw, 8px); min-width: 0; }
+    .pv-lugar { padding: 2px clamp(10px, 2.6cqw, 16px); border-radius: 999px; font-family: var(--display); font-weight: 400; font-size: clamp(18px, 5.4cqw, 30px); line-height: 1.3; color: #2a1a12; background: linear-gradient(180deg, #ffe9a3, #e2a93f); box-shadow: 0 2px 0 var(--ouro-esc); }
+    .pv-pos-info small { font-size: clamp(11px, 2.5cqw, 13.5px); font-weight: 800; color: var(--apagado); text-transform: uppercase; letter-spacing: 0.05em; }
+    .pv-pos-info strong { max-width: 100%; overflow: hidden; font-size: clamp(15px, 4cqw, 22px); font-weight: 900; color: #fff3df; white-space: nowrap; text-overflow: ellipsis; }
+    .pv-pos-info span { font-size: clamp(12.5px, 2.8cqw, 15px); font-weight: 800; color: var(--suave); }
 
-    .pv-passivas { display: grid; grid-template-columns: repeat(18, minmax(0, 1fr)); align-content: center; gap: 6px; height: auto; padding: 14px 12px; }
-    .pv-passiva { display: grid; justify-items: center; align-content: start; gap: 5px; min-width: 0; }
-    .pv-passiva b { display: grid; place-items: center; width: 100%; max-width: 46px; aspect-ratio: 1; border-radius: 12px; font-size: 22px; line-height: 1; background: linear-gradient(180deg, color-mix(in srgb, var(--c) 42%, #22131a), color-mix(in srgb, var(--c) 16%, #150b10)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 60%, transparent), 0 4px 10px -4px rgba(0, 0, 0, 0.7); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); transition-delay: calc(var(--i) * 18ms); }
-    .pv-passiva span { max-width: 100%; font-size: 10.5px; font-weight: 800; line-height: 1.15; text-align: center; color: var(--suave); }
-    .cartao-ferr:hover .pv-passiva b, .cartao-ferr:focus-visible .pv-passiva b { transform: translateY(-3px); }
+    .pv-passivas { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); align-content: center; gap: clamp(8px, 2.4cqw, 14px) clamp(6px, 1.8cqw, 12px); padding: clamp(12px, 3.6cqw, 22px); }
+    .pv-passiva { display: grid; justify-items: center; align-content: start; gap: 6px; min-width: 0; }
+    .pv-passiva b { display: grid; place-items: center; width: 100%; max-width: 62px; aspect-ratio: 1; border-radius: clamp(10px, 2.6cqw, 15px); font-size: clamp(20px, 5.4cqw, 28px); line-height: 1; color: color-mix(in srgb, var(--c) 28%, #fff6ef); background: linear-gradient(180deg, color-mix(in srgb, var(--c) 42%, #22131a), color-mix(in srgb, var(--c) 16%, #150b10)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 60%, transparent), 0 4px 10px -4px rgba(0, 0, 0, 0.7); }
+    .pv-passiva b svg { width: 54%; height: 54%; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)); }
+    .pv-passiva span { max-width: 100%; font-size: 11px; font-weight: 800; line-height: 1.15; text-align: center; color: var(--suave); }
+    @container (max-width: 440px) { .pv-passiva span { display: none; } }
 
-    @media (max-width: 1100px) { .pv-passivas { grid-template-columns: repeat(9, minmax(0, 1fr)); row-gap: 10px; } .pv-passiva b { max-width: 44px; } }
-    @media (max-width: 760px) { .cartoes { grid-template-columns: minmax(0, 1fr); } .cartao-ferr { padding: 18px 16px 16px; } .cartao-ferr h2 { font-size: 21px; } .pv-passivas { grid-template-columns: repeat(6, minmax(0, 1fr)); row-gap: 8px; padding: 12px 10px; } .pv-passiva span { display: none; } .pv-pos { gap: 10px; } .pv-tab { grid-template-columns: repeat(8, 22px); grid-auto-rows: 22px; } }
-    @media (max-width: 380px) { .pv-tab { grid-template-columns: repeat(8, 20px); grid-auto-rows: 20px; gap: 2px; } }
-    @media (prefers-reduced-motion: reduce) { .cartao-ferr, .cartao-ir svg, .pv-passiva b { transition: none; } .previa.carregando::after, .pv-trilha { animation: none; } }
+    .cr.pronto .pv-faixa img, .cr.pronto .pv-casa img, .cr.pronto .pv-passiva b { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s; }
+    .cr.pronto .cr-slide:not(.ativo) .pv-faixa img, .cr.pronto .cr-slide:not(.ativo) .pv-casa img, .cr.pronto .cr-slide:not(.ativo) .pv-passiva b { opacity: 0.4; transform: scale(0.8) translateY(4px); }
+    .cr.pronto .ativo .pv-faixa img, .cr.pronto .ativo .pv-casa img, .cr.pronto .ativo .pv-passiva b { transition-delay: calc(var(--i, 0) * 28ms + 180ms); }
+    .cr.pronto .ativo .pv-passiva:hover b { transform: translateY(-3px); transition-delay: 0s; }
+
+    @media (max-width: 1100px) {
+      .cr { --espia: 60px; --vao: 22px; }
+      .cr-slide { gap: 26px; padding: 18px 26px 18px 18px; }
+      .previa { height: 310px; }
+      .cr-slide .linha { font-size: 16px; }
+      .cr-slide li { font-size: 15px; }
+    }
+    @media (max-width: 860px) {
+      .cr { --espia: 44px; --vao: 16px; }
+      .cr-slide { grid-template-columns: minmax(0, 1fr); align-items: start; align-content: start; gap: 16px; padding: 14px 14px 20px; border-radius: 22px; }
+      .previa { height: 240px; }
+      .sl-texto { gap: 10px; padding: 0 6px; }
+      .sl-num { display: none; }
+      .cartao-ic { width: 44px; height: 44px; border-radius: 13px; }
+      .cartao-ic svg { width: 24px; height: 24px; }
+      .cr.pronto .cr-ant, .cr.pronto .cr-prox { position: static; }
+      .cr.pronto .cr-base { justify-content: space-between; width: var(--larg); height: 60px; margin: 0 auto; }
+      .cr-seta { width: 46px; height: 46px; }
+    }
+    @media (max-width: 560px) {
+      .cr { --espia: 26px; --vao: 10px; margin-top: 16px; }
+      .inicio-abre p { font-size: 15.5px; }
+      .previa { height: 206px; }
+      .cr-slide h2 { font-size: 24px; }
+      .cr-slide .linha { font-size: 15px; }
+      .cr-slide li { font-size: 14.5px; }
+      .cr-slide ul { gap: 5px; }
+      .cr-abas-linha { width: calc(100% - 20px); }
+      .cr-abas { gap: 4px; padding: 4px; border-radius: 16px; }
+      .cr-aba { height: 40px; gap: 7px; padding: 0 11px; font-size: 13.5px; }
+      .cr-aba:not([aria-selected="true"]) .cr-aba-nome { display: none; }
+      .cr-aba .tempo { left: 8px; right: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cr { --dur: 0.01s; }
+      .cr.pronto .cr-slide { transition: opacity 0.25s linear; }
+      .cr.pronto .previa > :not(.pv-tag), .cr.pronto .sl-texto { translate: none; }
+      .cr.pronto .sl-texto > *, .cr.pronto .pv-faixa img, .cr.pronto .pv-casa img, .cr.pronto .pv-passiva b, .cartao-ir, .cartao-ir svg, .cr-seta { transition: none; }
+      .cr.pronto .cr-slide:not(.ativo) .pv-faixa img, .cr.pronto .cr-slide:not(.ativo) .pv-casa img, .cr.pronto .cr-slide:not(.ativo) .pv-passiva b { transform: none; }
+      .previa.carregando::after, .pv-trilha, .cr .ativo .pv-calc-arte img, .cr .ativo .pv-calc-arte i { animation: none; }
+    }
   </style>
 </head>
 <body>
@@ -118,10 +226,12 @@
       <a class="marca" href="/pokepocketferramentas/"><img src="../assets/icone.png" alt="" /><span><span class="p">Poke</span>Pocket</span></a>
       <nav class="secoes" aria-label="Ferramentas"></nav>
       <div class="acoes-topo">
+        <a class="coracao" href="#apoie" data-goatcounter-click="menu-ferr-apoie" data-goatcounter-title="menu-ferr-apoie" aria-label="Apoie o projeto" title="Apoie"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg></a>
         <button class="abre-menu" type="button" aria-expanded="false" aria-controls="painel-secoes" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
       </div>
       <div class="painel-menu" id="painel-secoes">
         <nav aria-label="Ferramentas"></nav>
+        <a class="apoio" href="#apoie" data-goatcounter-click="menu-ferr-apoie-painel" data-goatcounter-title="menu-ferr-apoie-painel"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>Apoie</a>
       </div>
     </div>
   </header>
@@ -131,96 +241,149 @@
       <span class="rotulo">Pokéidle</span>
       <h1>Ferramentas</h1>
       <p>Calculadoras e listas para decidir melhor no Pokéidle: quanto vale o seu pokémon, quando a conta sobe de nível e o que está forte no PvP.</p>
+    </section>
+
+    <section class="cr" id="ferramentas" aria-label="Ferramentas" aria-roledescription="carrossel">
+      <div class="cr-abas-linha">
+        <div class="cr-abas" role="tablist" aria-label="Escolha a ferramenta"></div>
+      </div>
+      <div class="cr-palco">
+        <div class="cr-vista">
+          <div class="cr-trilho" id="cr-trilho" aria-live="off">
+            <article class="cr-slide" data-id="calculadora" data-curto="Calculadora">
+              <a class="vitrine" href="/pokepocketferramentas/calculadora/" tabindex="-1" aria-hidden="true" data-goatcounter-click="inicio-ferr-calculadora" data-goatcounter-title="inicio-ferr-calculadora">
+                <div class="previa pv-calc">
+                  <span class="pv-tag">Exemplo</span>
+                  <span class="pv-calc-arte"><img src="/pokepocket/calculadora/jogo/sprites-png/85006.png" alt="" decoding="async" draggable="false" onerror="this.style.visibility='hidden'" /><i>✦</i></span>
+                  <span class="pv-calc-info">
+                    <span class="pv-nome">Mega Charizard Y</span>
+                    <span class="pv-nota"><b>8,412</b><small>/10</small><em>Lendário</em></span>
+                    <span class="pv-linha">Score PvP <b style="color:#4ade80">742</b><i class="pv-barra" style="--p:.742"></i></span>
+                    <span class="pv-linha"><img src="/pokepocket/assets/gema.svg" alt="" draggable="false" />Preço justo <b style="color:#f9a8d4">48.500</b></span>
+                  </span>
+                </div>
+              </a>
+              <div class="sl-texto">
+                <span class="sl-num" aria-hidden="true">01 <i>/ 05</i></span>
+                <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M8.5 6.5h7M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M8.5 18h.01M12 18h.01M15.5 14.5V18"/></svg></span><h2>Calculadora Pokémon</h2></div>
+                <p class="linha">Descubra quanto o seu pokémon vale e até onde ele chega.</p>
+                <ul>
+                  <li>Cole a ficha ou mande o print do jogo</li>
+                  <li>Nota, score PvP e PvE e atributos</li>
+                  <li>Preço justo no Mercado</li>
+                  <li>Simule nível, refino e Z-&#8288;Move</li>
+                </ul>
+                <a class="cartao-ir" href="/pokepocketferramentas/calculadora/" draggable="false" data-goatcounter-click="inicio-ferr-calculadora" data-goatcounter-title="inicio-ferr-calculadora">Abrir calculadora<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="cr-slide" data-id="nivel" data-curto="Nível">
+              <a class="vitrine" href="/pokepocketferramentas/nivel/" tabindex="-1" aria-hidden="true" data-goatcounter-click="inicio-ferr-nivel" data-goatcounter-title="inicio-ferr-nivel">
+                <div class="previa pv-nivel">
+                  <span class="pv-tag">Exemplo</span>
+                  <svg viewBox="0 -66 390 216" preserveAspectRatio="xMidYMax slice" fill="none">
+                    <g fill="#fff3df"><circle cx="150" cy="30" r="1"/><circle cx="190" cy="18" r="1.2"/><circle cx="320" cy="26" r="1"/><circle cx="350" cy="52" r="1.3"/><circle cx="110" cy="62" r="0.9"/><circle cx="300" cy="12" r="0.8" opacity=".7"/><circle cx="60" cy="80" r="0.9" opacity=".6"/><circle cx="240" cy="-34" r="1.1"/><circle cx="330" cy="-50" r="0.9" opacity=".7"/><circle cx="170" cy="-14" r="0.8" opacity=".6"/><circle cx="280" cy="-8" r="1"/><circle cx="372" cy="-20" r="1.2"/><circle cx="208" cy="-56" r="0.8" opacity=".6"/></g>
+                    <circle cx="336" cy="-24" r="13" fill="#ffe9c4" opacity=".1"/><circle cx="336" cy="-24" r="8" fill="#f3e6de" opacity=".85"/><circle cx="339.5" cy="-26.5" r="6.8" fill="#1a0e16"/>
+                    <path d="M0 150V112l60-16 50 12 60-20 60 16 70-20 60 14 40-8v60z" fill="#22111a"/>
+                    <path d="M0 150v-22c40-4 70-8 100-16 40-12 70-32 100-50l55-28 35 22c30 20 70 44 110 56v38z" fill="#3a1f2c"/>
+                    <path d="M240 42l15-8 15 9-8-2-7 5-7-5z" fill="#f3e6de" opacity=".85"/>
+                    <path class="pv-trilha" d="M55 122c40-2 65-6 90-14s15-16 40-24 20-18 37-24 14-12 30-18" stroke="#ffd34d" stroke-width="2.2" stroke-linecap="round" opacity=".85"/>
+                    <g fill="#150b10" stroke="#e6c9b9" stroke-width="1.6"><circle cx="145" cy="108" r="3.2"/><circle cx="185" cy="84" r="3.2"/><circle cx="222" cy="60" r="3.2"/></g>
+                    <circle cx="55" cy="122" r="9" fill="#ffd34d" opacity=".25"/><circle cx="55" cy="122" r="4.6" fill="#ffd34d" stroke="#7d5313" stroke-width="1.4"/>
+                    <path d="M255 36V20" stroke="#e6c9b9" stroke-width="1.6"/><path d="M255 20l12 4-12 4z" fill="#ffd34d"/>
+                    <g><rect x="196" y="22" width="50" height="16" rx="8" fill="#150b10" stroke="#ffd34d" stroke-opacity=".6"/><text x="221" y="33.5" text-anchor="middle" fill="#ffe9a3" font-family="Nunito, system-ui, sans-serif" font-weight="900" font-size="9.5">Nv 1.500</text></g>
+                    <g><rect x="38" y="130" width="50" height="16" rx="8" fill="#150b10" stroke="#e6c9b9" stroke-opacity=".35"/><text x="63" y="141.5" text-anchor="middle" fill="#e6c9b9" font-family="Nunito, system-ui, sans-serif" font-weight="900" font-size="9.5">Nv 1.200</text></g>
+                  </svg>
+                  <span class="pv-nivel-txt"><small>Do Nv 1.200 ao 1.500</small><b>3 d 19 h</b></span>
+                </div>
+              </a>
+              <div class="sl-texto">
+                <span class="sl-num" aria-hidden="true">02 <i>/ 05</i></span>
+                <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 20.5 9 9.5l3.6 5.6 2.4-3.4 6.5 8.8z"/><path d="M15 11.7V3.5l4.5 1.8L15 7.1"/></svg></span><h2>Nível</h2></div>
+                <p class="linha">Saiba quando a sua conta chega no nível que você quer.</p>
+                <ul>
+                  <li>Informe o nível atual e o XP por hora</li>
+                  <li>Data prevista e XP que falta</li>
+                  <li>Marcos do caminho até lá</li>
+                </ul>
+                <a class="cartao-ir" href="/pokepocketferramentas/nivel/" draggable="false" data-goatcounter-click="inicio-ferr-nivel" data-goatcounter-title="inicio-ferr-nivel">Calcular nível<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="cr-slide" data-id="tier" data-curto="Tier PvP">
+              <a class="vitrine" href="/pokepocketferramentas/tier/" tabindex="-1" aria-hidden="true" data-goatcounter-click="inicio-ferr-tier" data-goatcounter-title="inicio-ferr-tier">
+                <div class="previa pv-tier carregando" id="pv-tier"></div>
+              </a>
+              <div class="sl-texto">
+                <span class="sl-num" aria-hidden="true">03 <i>/ 05</i></span>
+                <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5h8V9a4 4 0 0 1-8 0z"/><path d="M8 5.5H5a3 3 0 0 0 3.2 4M16 5.5h3a3 3 0 0 1-3.2 4M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/></svg></span><h2>Tier PvP</h2></div>
+                <p class="linha">O que está forte no ranqueado, a partir de partidas reais.</p>
+                <ul>
+                  <li>Atualizado todo dia</li>
+                  <li>Força e uso nos times do top 100</li>
+                  <li>Veja hoje, a semana ou o mês</li>
+                </ul>
+                <a class="cartao-ir" href="/pokepocketferramentas/tier/" draggable="false" data-goatcounter-click="inicio-ferr-tier" data-goatcounter-title="inicio-ferr-tier">Ver tier<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="cr-slide" data-id="posicionamento" data-curto="Posicionamento">
+              <a class="vitrine" href="/pokepocketferramentas/posicionamento/" tabindex="-1" aria-hidden="true" data-goatcounter-click="inicio-ferr-posicionamento" data-goatcounter-title="inicio-ferr-posicionamento">
+                <div class="previa pv-pos carregando" id="pv-pos"></div>
+              </a>
+              <div class="sl-texto">
+                <span class="sl-num" aria-hidden="true">04 <i>/ 05</i></span>
+                <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 12h17"/><circle cx="12" cy="12" r="3"/><path d="M8 7.5h.01M16 7.5h.01M8 16.5h.01M12 16.5h.01M16 16.5h.01"/></svg></span><h2>Posicionamento</h2></div>
+                <p class="linha">Como os melhores jogadores montam o time no tabuleiro.</p>
+                <ul>
+                  <li>Formações reais do top mensal</li>
+                  <li>Onde cada pokémon fica</li>
+                  <li>Renovado toda segunda</li>
+                </ul>
+                <a class="cartao-ir" href="/pokepocketferramentas/posicionamento/" draggable="false" data-goatcounter-click="inicio-ferr-posicionamento" data-goatcounter-title="inicio-ferr-posicionamento">Ver formações<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+
+            <article class="cr-slide" data-id="passivas" data-curto="Passivas">
+              <a class="vitrine" href="/pokepocketferramentas/passivas/" tabindex="-1" aria-hidden="true" data-goatcounter-click="inicio-ferr-passivas" data-goatcounter-title="inicio-ferr-passivas">
+                <div class="previa pv-passivas" id="pv-passivas"></div>
+              </a>
+              <div class="sl-texto">
+                <span class="sl-num" aria-hidden="true">05 <i>/ 05</i></span>
+                <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 2.5 5 13.5h6l-1 8 8.5-11h-6z"/><path d="M19.5 3.5v3M18 5h3M4.5 17.5v3M3 19h3"/></svg></span><h2>Passivas</h2></div>
+                <p class="linha">O que cada passiva nova do PvP faz, no tabuleiro.</p>
+                <ul>
+                  <li>18 passivas, uma por tipo</li>
+                  <li>Busque seu pokémon pelo nome</li>
+                  <li>Animação no tabuleiro, com som</li>
+                </ul>
+                <a class="cartao-ir" href="/pokepocketferramentas/passivas/" draggable="false" data-goatcounter-click="inicio-ferr-passivas" data-goatcounter-title="inicio-ferr-passivas">Ver passivas<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="cr-base">
+          <button class="cr-seta cr-ant" type="button" aria-label="Ferramenta anterior" aria-controls="cr-trilho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5.5 8.5 12l6.5 6.5"/></svg></button>
+          <button class="cr-pausa" type="button" aria-label="Pausar troca automática"><svg class="ic-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg><svg class="ic-toca" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.3v13.4a1 1 0 0 0 1.5.9l10.6-6.7a1 1 0 0 0 0-1.7L9.5 4.4A1 1 0 0 0 8 5.3z"/></svg><b aria-hidden="true">1 <i>/ 5</i></b></button>
+          <button class="cr-seta cr-prox" type="button" aria-label="Próxima ferramenta" aria-controls="cr-trilho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5.5 15.5 12 9 18.5"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="envolve">
       <ul class="fatos">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Grátis</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 7.6-1.7"/></svg>Sem login</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7M12 17v3.5"/></svg>Direto no navegador</li>
       </ul>
-    </section>
-
-    <div class="envolve">
-      <div class="cartoes">
-        <a class="cartao-ferr" href="/pokepocketferramentas/calculadora/" data-goatcounter-click="inicio-ferr-calculadora" data-goatcounter-title="inicio-ferr-calculadora">
-          <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M8.5 6.5h7M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M8.5 18h.01M12 18h.01M15.5 14.5V18"/></svg></span><h2>Calculadora Pokémon</h2></div>
-          <p class="linha">Descubra quanto o seu pokémon vale e até onde ele chega.</p>
-          <div class="previa pv-calc" aria-hidden="true">
-            <span class="pv-tag">Exemplo</span>
-            <span class="pv-calc-arte"><img src="/pokepocket/calculadora/jogo/sprites-png/85006.png" alt="" decoding="async" onerror="this.style.visibility='hidden'" /><i>✦</i></span>
-            <span class="pv-calc-info">
-              <span class="pv-nome">Mega Charizard Y</span>
-              <span class="pv-nota"><b>8,412</b><small>/10</small><em>Lendário</em></span>
-              <span class="pv-linha">Score PvP <b style="color:#4ade80">742</b><i class="pv-barra" style="--p:.742"></i></span>
-              <span class="pv-linha"><img src="/pokepocket/assets/gema.svg" alt="" />Preço justo <b style="color:#f9a8d4">48.500</b></span>
-            </span>
-          </div>
-          <ul>
-            <li>Cole a ficha ou mande o print do jogo</li>
-            <li>Nota, score PvP e PvE e atributos</li>
-            <li>Preço justo no Mercado</li>
-            <li>Simule nível, refino e Z-&#8288;Move</li>
-          </ul>
-          <span class="cartao-ir">Abrir calculadora<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="cartao-ferr" href="/pokepocketferramentas/nivel/" data-goatcounter-click="inicio-ferr-nivel" data-goatcounter-title="inicio-ferr-nivel">
-          <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 20.5 9 9.5l3.6 5.6 2.4-3.4 6.5 8.8z"/><path d="M15 11.7V3.5l4.5 1.8L15 7.1"/></svg></span><h2>Nível</h2></div>
-          <p class="linha">Saiba quando a sua conta chega no nível que você quer.</p>
-          <div class="previa pv-nivel" aria-hidden="true">
-            <span class="pv-tag">Exemplo</span>
-            <svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice" fill="none">
-              <g fill="#fff3df"><circle cx="150" cy="30" r="1"/><circle cx="190" cy="18" r="1.2"/><circle cx="320" cy="26" r="1"/><circle cx="350" cy="52" r="1.3"/><circle cx="110" cy="62" r="0.9"/><circle cx="300" cy="12" r="0.8" opacity=".7"/><circle cx="60" cy="80" r="0.9" opacity=".6"/></g>
-              <path d="M0 150V112l60-16 50 12 60-20 60 16 70-20 60 14 40-8v60z" fill="#22111a"/>
-              <path d="M0 150v-22c40-4 70-8 100-16 40-12 70-32 100-50l55-28 35 22c30 20 70 44 110 56v38z" fill="#3a1f2c"/>
-              <path d="M240 42l15-8 15 9-8-2-7 5-7-5z" fill="#f3e6de" opacity=".85"/>
-              <path class="pv-trilha" d="M55 122c40-2 65-6 90-14s15-16 40-24 20-18 37-24 14-12 30-18" stroke="#ffd34d" stroke-width="2.2" stroke-linecap="round" opacity=".85"/>
-              <g fill="#150b10" stroke="#e6c9b9" stroke-width="1.6"><circle cx="145" cy="108" r="3.2"/><circle cx="185" cy="84" r="3.2"/><circle cx="222" cy="60" r="3.2"/></g>
-              <circle cx="55" cy="122" r="9" fill="#ffd34d" opacity=".25"/><circle cx="55" cy="122" r="4.6" fill="#ffd34d" stroke="#7d5313" stroke-width="1.4"/>
-              <path d="M255 36V20" stroke="#e6c9b9" stroke-width="1.6"/><path d="M255 20l12 4-12 4z" fill="#ffd34d"/>
-              <g><rect x="196" y="22" width="50" height="16" rx="8" fill="#150b10" stroke="#ffd34d" stroke-opacity=".6"/><text x="221" y="33.5" text-anchor="middle" fill="#ffe9a3" font-family="Nunito, system-ui, sans-serif" font-weight="900" font-size="9.5">Nv 1.500</text></g>
-              <g><rect x="38" y="130" width="50" height="16" rx="8" fill="#150b10" stroke="#e6c9b9" stroke-opacity=".35"/><text x="63" y="141.5" text-anchor="middle" fill="#e6c9b9" font-family="Nunito, system-ui, sans-serif" font-weight="900" font-size="9.5">Nv 1.200</text></g>
-            </svg>
-            <span class="pv-nivel-txt"><small>Do Nv 1.200 ao 1.500</small><b>3 d 19 h</b></span>
-          </div>
-          <ul>
-            <li>Informe o nível atual e o XP por hora</li>
-            <li>Data prevista e XP que falta</li>
-            <li>Marcos do caminho até lá</li>
-          </ul>
-          <span class="cartao-ir">Calcular nível<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="cartao-ferr" href="/pokepocketferramentas/tier/" data-goatcounter-click="inicio-ferr-tier" data-goatcounter-title="inicio-ferr-tier">
-          <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5h8V9a4 4 0 0 1-8 0z"/><path d="M8 5.5H5a3 3 0 0 0 3.2 4M16 5.5h3a3 3 0 0 1-3.2 4M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/></svg></span><h2>Tier PvP</h2></div>
-          <p class="linha">O que está forte no ranqueado, a partir de partidas reais.</p>
-          <div class="previa pv-tier carregando" id="pv-tier" aria-hidden="true"></div>
-          <ul>
-            <li>Atualizado todo dia</li>
-            <li>Força e uso nos times do top 100</li>
-            <li>Veja hoje, a semana ou o mês</li>
-          </ul>
-          <span class="cartao-ir">Ver tier<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="cartao-ferr" href="/pokepocketferramentas/posicionamento/" data-goatcounter-click="inicio-ferr-posicionamento" data-goatcounter-title="inicio-ferr-posicionamento">
-          <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 12h17"/><circle cx="12" cy="12" r="3"/><path d="M8 7.5h.01M16 7.5h.01M8 16.5h.01M12 16.5h.01M16 16.5h.01"/></svg></span><h2>Posicionamento</h2></div>
-          <p class="linha">Como os melhores jogadores montam o time no tabuleiro.</p>
-          <div class="previa pv-pos carregando" id="pv-pos" aria-hidden="true"></div>
-          <ul>
-            <li>Formações reais do top mensal</li>
-            <li>Onde cada pokémon fica</li>
-            <li>Renovado toda segunda</li>
-          </ul>
-          <span class="cartao-ir">Ver formações<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="cartao-ferr largo" href="/pokepocketferramentas/passivas/" data-goatcounter-click="inicio-ferr-passivas" data-goatcounter-title="inicio-ferr-passivas">
-          <div class="cartao-cab"><span class="cartao-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 2.5 5 13.5h6l-1 8 8.5-11h-6z"/><path d="M19.5 3.5v3M18 5h3M4.5 17.5v3M3 19h3"/></svg></span><h2>Passivas</h2></div>
-          <p class="linha">O que cada passiva nova do PvP faz, no tabuleiro.</p>
-          <div class="previa pv-passivas" id="pv-passivas" aria-hidden="true"></div>
-          <ul>
-            <li>18 passivas, uma por tipo</li>
-            <li>Busque seu pokémon pelo nome</li>
-            <li>Animação no tabuleiro, com som</li>
-          </ul>
-          <span class="cartao-ir">Ver passivas<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </div>
+      <nav class="atalhos" aria-label="Atalhos para as ferramentas">
+        <span>Ir direto:</span>
+        <a href="/pokepocketferramentas/calculadora/">Calculadora</a>
+        <a href="/pokepocketferramentas/nivel/">Nível</a>
+        <a href="/pokepocketferramentas/tier/">Tier PvP</a>
+        <a href="/pokepocketferramentas/posicionamento/">Posicionamento</a>
+        <a href="/pokepocketferramentas/passivas/">Passivas</a>
+      </nav>
     </div>
 
     <section class="final">
@@ -248,41 +411,55 @@
       const FILEIRAS = [[12, 17], [11, 18], [11, 18], [13, 16], [13, 16]];
       const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n };
       const num = (v) => v != null && v !== '' && Number.isFinite(Number(v));
-      const sprite = (p) => {
+      const sprite = (p, i) => {
         const img = el('img');
-        img.alt = ''; img.decoding = 'async'; img.title = p.nome || '';
+        img.alt = ''; img.decoding = 'async'; img.draggable = false; img.title = p.nome || '';
+        if (i != null) img.style.setProperty('--i', i);
         const fila = [...new Set([p.looktype, 60000 + Number(p.speciesId)].filter(num).map(Number))];
         const proxima = () => { const l = fila.shift(); if (l != null) img.src = `${SPR}${l}.png`; else { img.onerror = null; img.style.visibility = 'hidden' } };
         img.onerror = proxima; proxima();
         return img;
       };
-      const some = (id) => { const n = document.getElementById(id); if (n) n.hidden = true };
+      const falhou = (id, txt) => { const n = document.getElementById(id); if (n) { n.classList.remove('carregando'); n.replaceChildren(el('span', 'vazio', txt)) } };
       const pronto = (n) => n.classList.remove('carregando');
       const pega = (u) => fetch(u, { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))));
 
       const passivas = document.getElementById('pv-passivas');
-      passivas.append(...PASSIVAS.map(([ic, nome, tipo], i) => {
+      const icones = PASSIVAS.map(([ic, nome, tipo], i) => {
         const p = el('span', 'pv-passiva');
         p.style.cssText = `--c:${COR_TIPO[tipo]};--i:${i}`;
-        p.append(el('b', null, ic), el('span', null, nome));
+        const b = el('b', null, ic);
+        b.dataset.id = nome.toLowerCase().replace(/\s+/g, '_');
+        p.append(b, el('span', null, nome));
         return p;
-      }));
+      });
+      passivas.append(...icones);
+      import('/pokepocket/passivas/icones.js').then((m) => {
+        if (typeof m.iconePassiva !== 'function') return;
+        for (const p of icones) {
+          const b = p.firstChild;
+          const svg = m.iconePassiva(b.dataset.id);
+          if (typeof svg === 'string' && svg.trim().startsWith('<svg')) b.innerHTML = svg;
+        }
+      }).catch(() => {});
 
       const tierP = pega('/pokepocket/tier/tier.json');
       tierP.then((t) => {
-        const faixas = (t?.janelas?.dia?.tiers || []).filter((g) => g.itens?.length).slice(0, 3);
+        const faixas = (t?.janelas?.dia?.tiers || []).filter((g) => g.itens?.length).slice(0, 4);
         if (!faixas.length) throw new Error('sem tier');
         const caixa = document.getElementById('pv-tier');
+        caixa.style.setProperty('--n', faixas.length);
+        let k = 0;
         caixa.replaceChildren(...faixas.map((g) => {
           const f = el('div', 'pv-faixa');
           f.style.setProperty('--cor', COR_TIER[g.tier] || '#8b919c');
           const lista = el('span');
-          lista.append(...g.itens.slice(0, 8).map(sprite));
+          lista.append(...g.itens.slice(0, 8).map((p) => sprite(p, k++)));
           f.append(el('b', null, g.tier), lista);
           return f;
         }));
         pronto(caixa);
-      }).catch(() => some('pv-tier'));
+      }).catch(() => falhou('pv-tier', 'Tier de hoje indisponível no momento'));
 
       Promise.all([pega('/pokepocket/posicionamento/posicionamento.json'), tierP.catch(() => null)]).then(([d, t]) => {
         const j = Array.isArray(d?.jogadores) ? d.jogadores[0] : null;
@@ -293,7 +470,7 @@
         for (const x of dia?.foraDoMeta || []) if (!tiers.has(Number(x.speciesId)) && COR_TIER[x.tier]) tiers.set(Number(x.speciesId), x.tier);
         const ocupa = new Map(j.pks.map((p) => [Number(p.casa), p]));
         const tab = el('div', 'pv-tab');
-        let casa = 0;
+        let casa = 0, k = 0;
         FILEIRAS.forEach(([de, ate], f) => {
           for (let cx = 11; cx <= 18; cx++) {
             if (cx < de || cx > ate) { tab.append(el('span')); continue }
@@ -302,7 +479,7 @@
             if (p) {
               const tier = tiers.get(Number(p.speciesId));
               if (tier) c.style.setProperty('--t', COR_TIER[tier]);
-              c.append(sprite(p));
+              c.append(sprite(p, k++ * 2));
             }
             tab.append(c);
           }
@@ -314,7 +491,248 @@
         const caixa = document.getElementById('pv-pos');
         caixa.replaceChildren(tab, info);
         pronto(caixa);
-      }).catch(() => some('pv-pos'));
+      }).catch(() => falhou('pv-pos', 'Formações indisponíveis no momento'));
+    })();
+    (() => {
+      const cr = document.querySelector('.cr');
+      const vista = cr?.querySelector('.cr-vista');
+      const trilho = cr?.querySelector('.cr-trilho');
+      if (!cr || !vista || !trilho) return;
+      const slides = [...trilho.querySelectorAll('.cr-slide')];
+      const N = slides.length;
+      const abas = cr.querySelector('.cr-abas');
+      const btAnt = cr.querySelector('.cr-ant');
+      const btProx = cr.querySelector('.cr-prox');
+      const btPausa = cr.querySelector('.cr-pausa');
+      const contador = btPausa.querySelector('b');
+      const TEMPO = 8000;
+      const PAUSA_INTERACAO = 9000;
+      const ENCOLHE = 0.07;
+      const reduz = matchMedia('(prefers-reduced-motion: reduce)');
+      const meio = Math.floor(N / 2);
+      const circ = (k) => ((((k % N) + N) % N) + meio) % N - meio;
+      const ids = slides.map((s) => s.dataset.id);
+      const lista = [];
+      let atual = 0, passo = 0, largura = 0, timerInteracao = 0;
+      const motivos = new Set();
+
+      cr.style.setProperty('--tempo', `${TEMPO}ms`);
+      slides.forEach((s, i) => {
+        const id = s.dataset.id;
+        s.id = `sl-${id}`;
+        s.setAttribute('role', 'tabpanel');
+        s.setAttribute('aria-roledescription', 'slide');
+        s.setAttribute('aria-label', `${i + 1} de ${N}`);
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'cr-aba';
+        b.id = `aba-${id}`;
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-controls', s.id);
+        const ic = s.querySelector('.cartao-ic svg')?.cloneNode(true);
+        const nome = document.createElement('span');
+        nome.className = 'cr-aba-nome';
+        nome.textContent = s.dataset.curto || s.querySelector('h2')?.textContent || id;
+        const tempo = document.createElement('span');
+        tempo.className = 'tempo';
+        tempo.setAttribute('aria-hidden', 'true');
+        if (ic) b.append(ic);
+        b.append(nome, tempo);
+        b.addEventListener('click', () => { irPara(i, { usuario: true }) });
+        abas.append(b);
+        lista.push(b);
+      });
+
+      const mede = () => {
+        largura = trilho.getBoundingClientRect().width;
+        passo = largura + (parseFloat(getComputedStyle(trilho).columnGap) || 0);
+      };
+      const aplica = (s, o) => {
+        const a = Math.min(Math.abs(o), 2);
+        const encolhe = Math.min(a, 1) * ENCOLHE;
+        const x = o * passo - Math.sign(o) * encolhe * largura / 2;
+        s.style.setProperty('--o', o.toFixed(4));
+        s.style.transform = `translate3d(${x.toFixed(1)}px,0,0) scale(${(1 - encolhe).toFixed(4)})`;
+        s.style.opacity = (a <= 1 ? 1 - a * 0.45 : Math.max(0, 0.55 * (2 - a))).toFixed(3);
+        s.style.zIndex = a < 0.5 ? 3 : a <= 1 ? 2 : 1;
+      };
+      const desenha = (frac = 0) => slides.forEach((s, i) => aplica(s, circ(i - atual) + frac));
+      const semAnim = (fn) => {
+        slides.forEach((s) => s.classList.add('sem-anim'));
+        fn();
+        void trilho.offsetWidth;
+        slides.forEach((s) => s.classList.remove('sem-anim'));
+      };
+
+      const reinicia = () => {
+        lista.forEach((b) => b.querySelector('.tempo').classList.remove('corre'));
+        const t = lista[atual].querySelector('.tempo');
+        void t.offsetWidth;
+        t.classList.add('corre');
+      };
+      const estado = () => {
+        const parado = motivos.has('usuario') || motivos.has('movimento');
+        cr.classList.toggle('pausado', motivos.size > 0);
+        cr.classList.toggle('parado', parado);
+        btPausa.setAttribute('aria-label', parado ? 'Retomar troca automática' : 'Pausar troca automática');
+        trilho.setAttribute('aria-live', parado ? 'polite' : 'off');
+      };
+      const pausa = (m, sim) => { if (sim) motivos.add(m); else motivos.delete(m); estado() };
+      const interagiu = () => {
+        pausa('interacao', true);
+        clearTimeout(timerInteracao);
+        timerInteracao = setTimeout(() => { pausa('interacao', false); reinicia() }, PAUSA_INTERACAO);
+      };
+
+      const marca = () => {
+        slides.forEach((s, i) => {
+          const sim = i === atual;
+          s.classList.toggle('ativo', sim);
+          s.inert = !sim;
+          if (sim) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+        });
+        lista.forEach((b, i) => {
+          const sim = i === atual;
+          b.setAttribute('aria-selected', String(sim));
+          b.tabIndex = sim ? 0 : -1;
+        });
+        contador.innerHTML = `${atual + 1} <i>/ ${N}</i>`;
+        reinicia();
+      };
+
+      function irPara(novo, { usuario = false, foco = null } = {}) {
+        novo = ((novo % N) + N) % N;
+        if (usuario) {
+          interagiu();
+          history.replaceState(history.state, '', `${location.pathname}${location.search}#${ids[novo]}`);
+        }
+        if (novo === atual) { desenha(); reinicia(); return }
+        const d = circ(novo - atual);
+        let pulou = false;
+        slides.forEach((s, i) => {
+          const antes = circ(i - atual);
+          const depois = circ(i - novo) + d;
+          if (depois !== antes) {
+            if (!pulou) { slides.forEach((x) => x.classList.add('sem-anim')); pulou = true }
+            aplica(s, Math.max(-2, Math.min(2, depois)));
+          }
+        });
+        if (pulou) {
+          void trilho.offsetWidth;
+          slides.forEach((x) => x.classList.remove('sem-anim'));
+        }
+        atual = novo;
+        desenha();
+        marca();
+        if (foco === 'slide') slides[atual].querySelector('.cartao-ir')?.focus({ preventScroll: true });
+        if (foco === 'aba') lista[atual].focus({ preventScroll: true });
+      }
+
+      lista[0].parentElement.addEventListener('animationend', (e) => {
+        if (e.animationName === 'cr-tempo' && !cr.classList.contains('pausado')) irPara(atual + 1);
+      });
+
+      btAnt.addEventListener('click', () => irPara(atual - 1, { usuario: true }));
+      btProx.addEventListener('click', () => irPara(atual + 1, { usuario: true }));
+      btPausa.addEventListener('click', () => {
+        const parado = motivos.has('usuario') || motivos.has('movimento');
+        if (parado) { motivos.delete('usuario'); motivos.delete('movimento'); clearTimeout(timerInteracao); motivos.delete('interacao'); estado(); reinicia() }
+        else pausa('usuario', true);
+      });
+
+      abas.addEventListener('keydown', (e) => {
+        const mapa = { ArrowRight: atual + 1, ArrowLeft: atual - 1, Home: 0, End: N - 1 };
+        if (!(e.key in mapa)) return;
+        e.preventDefault();
+        irPara(mapa[e.key], { usuario: true, foco: 'aba' });
+      });
+      cr.addEventListener('keydown', (e) => {
+        if (e.defaultPrevented || abas.contains(e.target) || e.altKey || e.ctrlKey || e.metaKey) return;
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        irPara(atual + (e.key === 'ArrowRight' ? 1 : -1), { usuario: true, foco: vista.contains(e.target) ? 'slide' : null });
+      });
+
+      cr.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pausa('mouse', true) });
+      cr.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') pausa('mouse', false) });
+      cr.addEventListener('focusin', (e) => { pausa('foco', e.target !== btPausa && e.target.matches(':focus-visible')) });
+      cr.addEventListener('focusout', (e) => { if (!cr.contains(e.relatedTarget)) pausa('foco', false) });
+      document.addEventListener('visibilitychange', () => pausa('oculta', document.hidden));
+      if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => pausa('fora', !en.isIntersecting), { threshold: 0.3 }).observe(vista);
+      const ajustaMovimento = () => pausa('movimento', reduz.matches);
+      reduz.addEventListener?.('change', ajustaMovimento);
+
+      let toque = null, suprime = false, quadro = 0;
+      vista.addEventListener('dragstart', (e) => e.preventDefault());
+      vista.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || toque) return;
+        toque = { id: e.pointerId, x0: e.clientX, y0: e.clientY, t0: performance.now(), dx: 0, arrasta: false, ultX: e.clientX, ultT: performance.now(), v: 0 };
+      });
+      vista.addEventListener('pointermove', (e) => {
+        if (!toque || e.pointerId !== toque.id) return;
+        const dx = e.clientX - toque.x0, dy = e.clientY - toque.y0;
+        if (!toque.arrasta) {
+          if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) { toque = null; return }
+          if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+          toque.arrasta = true;
+          try { vista.setPointerCapture(e.pointerId) } catch {}
+          cr.classList.add('arrastando');
+          pausa('arrasto', true);
+        }
+        const agora = performance.now();
+        const dt = agora - toque.ultT;
+        if (dt > 0) toque.v = 0.7 * ((e.clientX - toque.ultX) / dt) + 0.3 * toque.v;
+        toque.ultX = e.clientX; toque.ultT = agora; toque.dx = dx;
+        if (!quadro) quadro = requestAnimationFrame(() => {
+          quadro = 0;
+          if (toque?.arrasta) desenha(Math.max(-1.1, Math.min(1.1, toque.dx / passo)));
+        });
+        e.preventDefault();
+      });
+      const solta = (e, cancelou) => {
+        if (!toque || e.pointerId !== toque.id) return;
+        const t = toque;
+        toque = null;
+        if (!t.arrasta) return;
+        cancelAnimationFrame(quadro); quadro = 0;
+        cr.classList.remove('arrastando');
+        pausa('arrasto', false);
+        suprime = true;
+        setTimeout(() => { suprime = false }, 0);
+        const frac = t.dx / passo;
+        const rapido = Math.abs(t.v) > 0.45 && Math.abs(t.dx) > 24;
+        let dir = 0;
+        if (!cancelou && (Math.abs(frac) > 0.18 || rapido)) dir = (rapido ? t.v : t.dx) < 0 ? 1 : -1;
+        if (dir) irPara(atual + dir, { usuario: true });
+        else { interagiu(); desenha(); }
+      };
+      vista.addEventListener('pointerup', (e) => solta(e, false));
+      vista.addEventListener('pointercancel', (e) => solta(e, true));
+      vista.addEventListener('lostpointercapture', (e) => { if (toque?.arrasta) solta(e, false) });
+      vista.addEventListener('click', (e) => {
+        if (suprime) { e.preventDefault(); e.stopPropagation(); suprime = false; return }
+        if (slides[atual].contains(e.target)) return;
+        const r = slides[atual].getBoundingClientRect();
+        if (e.clientX < r.left) irPara(atual - 1, { usuario: true });
+        else if (e.clientX > r.right) irPara(atual + 1, { usuario: true });
+      }, true);
+
+      const doHash = () => ids.indexOf(decodeURIComponent(location.hash.slice(1)));
+      window.addEventListener('hashchange', () => { const i = doHash(); if (i >= 0) irPara(i, { usuario: true }) });
+
+      cr.classList.add('pronto');
+      const inicial = doHash();
+      atual = inicial >= 0 ? inicial : 0;
+      mede();
+      semAnim(desenha);
+      ajustaMovimento();
+      marca();
+      if (inicial >= 0) requestAnimationFrame(() => {
+        const topo = document.querySelector('.topo')?.offsetHeight || 0;
+        window.scrollTo({ top: Math.max(0, cr.getBoundingClientRect().top + scrollY - topo - 14), behavior: 'instant' });
+      });
+      if ('ResizeObserver' in window) new ResizeObserver(() => { const l = largura; mede(); if (l !== largura) semAnim(desenha) }).observe(trilho);
+      else window.addEventListener('resize', () => { mede(); semAnim(desenha) });
     })();
   </script>
   <script data-goatcounter="https://pokepocket.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
