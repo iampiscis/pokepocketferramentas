@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <!-- gerado a partir de iampiscis/pokepocket nivel/index.html; não editar -->
+  <base href="/pokepocket/nivel/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora de Nível · PokePocket</title>
+  <meta name="description" content="Calculadora de nível do Pokéidle: diga o nível e o XP por hora e veja quando chega ao nível que quer, com data prevista, XP que falta e marcos do caminho." />
+  <meta name="theme-color" content="#0b0608" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PokePocket" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Calculadora de Nível · PokePocket" />
+  <meta property="og:description" content="Quando você chega ao nível que quer no Pokéidle: tempo, data, XP que falta e marcos. Grátis, no navegador." />
+  <meta property="og:url" content="https://iampiscis.github.io/pokepocketferramentas/nivel/" />
+  <meta property="og:image" content="https://iampiscis.github.io/pokepocket/assets/previa-nivel.png?v=202611221558" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Calculadora de Nível do PokePocket: montanha dourada com a trilha até o nível alvo" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://iampiscis.github.io/pokepocket/assets/previa-nivel.png?v=202611221558" />
+  <link rel="icon" href="../assets/icone.png" />
+  <link rel="stylesheet" href="../assets/ferramentas.css" />
+  <script src="../assets/ferramentas.js" defer></script>
+  <script>document.documentElement.classList.add('sem-vt'); document.documentElement.classList.add('so-ferr'); document.documentElement.dataset.isolado = '/pokepocketferramentas/'; if (new URLSearchParams(location.search).has('embed')) document.documentElement.classList.add('embed')</script>
+  <link rel="stylesheet" href="../calculadora/calc.css" />
+  <link rel="stylesheet" href="../assets/cresselia.css" />
+  <link rel="stylesheet" href="nivel.css" />
+  <script src="../assets/cresselia.js" defer></script>
+  <script src="nivel.js" defer></script>
+</head>
+<body>
+  <div class="ceu" aria-hidden="true"></div>
+
+  <header class="topo">
+    <div class="envolve">
+      <a class="marca" href="/pokepocketferramentas/"><img src="../assets/icone.png" alt="" /><span><span class="p">Poke</span>Pocket</span></a>
+      <nav class="secoes" aria-label="Seções">
+      </nav>
+      <div class="acoes-topo">
+        <div class="ferramentas" data-ferramentas>
+          <button type="button" class="destino ferr-botao ativo" aria-expanded="false" aria-controls="lista-ferramentas" title="Ferramentas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h16v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z"/><path d="M9 9.5V6.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6.5v3M4 13.5h16M10.5 13.5v2h3v-2"/></svg><span class="rot">Ferramentas</span><svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="ferr-lista" id="lista-ferramentas" aria-label="Ferramentas">
+            <a href="/pokepocketferramentas/" data-goatcounter-click="menu-nivel-calculadora" data-goatcounter-title="menu-nivel-calculadora"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M8.5 6.5h7M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M8.5 18h.01M12 18h.01M15.5 14.5V18"/></svg></span><span class="ferr-txt"><b>Calculadora Pokémon</b><small>Nota, score e preço</small></span></a>
+            <a href="/pokepocketferramentas/nivel/" aria-current="page"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 20.5 9 9.5l3.6 5.6 2.4-3.4 6.5 8.8z"/><path d="M15 11.7V3.5l4.5 1.8L15 7.1"/></svg></span><span class="ferr-txt"><b>Nível</b><small>Quando você chega lá</small></span></a>
+            <a href="/pokepocketferramentas/tier/" data-goatcounter-click="menu-nivel-tier" data-goatcounter-title="menu-nivel-tier"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5h8V9a4 4 0 0 1-8 0z"/><path d="M8 5.5H5a3 3 0 0 0 3.2 4M16 5.5h3a3 3 0 0 1-3.2 4M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/></svg></span><span class="ferr-txt"><b>Tier PvP</b><small>O meta do ranqueado, todo dia</small></span></a>
+            <a href="/pokepocketferramentas/posicionamento/" data-goatcounter-click="menu-nivel-pos" data-goatcounter-title="menu-nivel-pos"><span class="ferr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 12h17"/><circle cx="12" cy="12" r="3"/><path d="M8 7.5h.01M16 7.5h.01M8 16.5h.01M12 16.5h.01M16 16.5h.01"/></svg></span><span class="ferr-txt"><b>Posicionamento<span class="selo-novo">novo</span></b><small>Formações reais do top mensal</small></span></a>
+          </div>
+        </div>
+        <button class="abre-menu" type="button" aria-expanded="false" aria-controls="painel-secoes" aria-label="Abrir seções"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
+      </div>
+      <div class="painel-menu" id="painel-secoes">
+        <nav aria-label="Seções">
+        </nav>
+        <div class="painel-pe">
+          <span class="pe-rot">Ferramentas</span>
+          <div class="pe-ferr">
+            <a href="/pokepocketferramentas/" data-goatcounter-click="menu-nivel-calculadora-painel" data-goatcounter-title="menu-nivel-calculadora-painel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M8.5 6.5h7M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M8.5 18h.01M12 18h.01M15.5 14.5V18"/></svg>Calculadora</a>
+            <a href="/pokepocketferramentas/nivel/" class="ativo" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 20.5 9 9.5l3.6 5.6 2.4-3.4 6.5 8.8z"/><path d="M15 11.7V3.5l4.5 1.8L15 7.1"/></svg>Nível</a>
+            <a href="/pokepocketferramentas/tier/" data-goatcounter-click="menu-nivel-tier-painel" data-goatcounter-title="menu-nivel-tier-painel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5h8V9a4 4 0 0 1-8 0z"/><path d="M8 5.5H5a3 3 0 0 0 3.2 4M16 5.5h3a3 3 0 0 1-3.2 4M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/></svg>Tier PvP</a>
+            <a href="/pokepocketferramentas/posicionamento/" data-goatcounter-click="menu-nivel-pos-painel" data-goatcounter-title="menu-nivel-pos-painel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 12h17"/><circle cx="12" cy="12" r="3"/><path d="M8 7.5h.01M16 7.5h.01M8 16.5h.01M12 16.5h.01M16 16.5h.01"/></svg>Posicionamento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="nv">
+    <section class="abre envolve">
+      <span class="rotulo">Pokéidle</span>
+      <h1>Calculadora de Nível</h1>
+      <p>Diga onde a conta está e quanto XP faz por hora. A conta mostra quando você chega lá.</p>
+    </section>
+
+    <div class="envolve nv-grade">
+      <section class="placa cartao nv-entrada" aria-labelledby="t-conta">
+        <div class="cab-cartao">
+          <span class="ico-cab" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></span>
+          <h2 id="t-conta">Sua conta</h2>
+        </div>
+        <div class="vao nv-campos">
+          <div class="nv-campo">
+            <span class="nv-rot" id="r-agora">Agora</span>
+            <div class="seg" id="seg-base" role="group" aria-labelledby="r-agora"><button type="button" data-v="nivel" aria-pressed="true">Nível</button><button type="button" data-v="xp" aria-pressed="false">XP total</button></div>
+            <div class="nv-dupla" id="grupo-nivel">
+              <label><span>Nível atual</span><input id="nivel" class="campo" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: 1.200" /></label>
+              <label><span>% do nível</span><input id="pct" class="campo" type="text" inputmode="decimal" autocomplete="off" placeholder="0" /></label>
+            </div>
+            <label id="grupo-xp" hidden><span>XP total</span><input id="xp" class="campo" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 28,6 bi" /></label>
+          </div>
+          <div class="nv-campo">
+            <label><span>XP por hora</span><input id="xph" class="campo" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 300 mi" aria-describedby="d-xph" /></label>
+            <small id="d-xph">Aceita 300 mi, 1,5 bi ou 250k.</small>
+          </div>
+          <div class="nv-campo">
+            <span class="nv-rot" id="r-bonus">Bônus de XP <small>multiplicador</small></span>
+            <div class="nv-bonus">
+              <div class="seg" id="seg-bonus" role="group" aria-labelledby="r-bonus"><button type="button" data-v="1" aria-pressed="true">Sem</button><button type="button" data-v="1.5" aria-pressed="false">×1,5</button><button type="button" data-v="2" aria-pressed="false">×2</button><button type="button" data-v="3" aria-pressed="false">×3</button></div>
+              <label class="nv-x"><span class="sr">Outro multiplicador</span><input id="bonus" class="campo" type="text" inputmode="decimal" autocomplete="off" placeholder="1" /></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="cab-cartao">
+          <span class="ico-cab" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4.5c4-2.5 7 2.5 14 0v8c-7 2.5-10-2.5-14 0"/></svg></span>
+          <h2 id="t-objetivo">Objetivo</h2>
+        </div>
+        <div class="vao nv-campos">
+          <div class="seg" id="seg-modo" role="group" aria-labelledby="t-objetivo"><button type="button" data-v="nivel" aria-pressed="true">Chegar ao nível</button><button type="button" data-v="data" aria-pressed="false">Nível na data</button></div>
+          <div class="nv-campo" id="grupo-alvo">
+            <label><span>Nível alvo</span><input id="alvo" class="campo" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex.: 1.500" /></label>
+            <div class="atalhos" id="atalhos" aria-label="Atalhos de nível"></div>
+          </div>
+          <label class="nv-campo" id="grupo-data" hidden><span>Data</span><input id="data" class="campo" type="date" /></label>
+          <label class="nv-campo"><span>Começou no nível <small>opcional</small></span><input id="partida" class="campo" type="text" inputmode="numeric" autocomplete="off" placeholder="Nível atual" /></label>
+        </div>
+      </section>
+
+      <section class="vao nv-saida" aria-labelledby="t-escalada">
+        <h2 class="sr" id="t-escalada">Escalada</h2>
+        <div id="vazio" class="nv-vazio" role="status" hidden></div>
+        <div id="resultado" class="nv-res" aria-live="polite">
+          <div id="monte" class="nl-monte" role="img" aria-label="Escalada">
+            <span id="ceu" class="nl-ceu" aria-hidden="true"></span>
+            <span id="voo" class="nl-voo" aria-hidden="true"></span>
+            <span id="cena" class="nl-cena"></span>
+          </div>
+          <div class="nv-linha">
+            <div id="cab" class="nl-cartao nl-cab"></div>
+            <div id="ritmo" class="nl-cartao nl-ritmo"></div>
+          </div>
+          <ol id="marcos" class="nl-marcos" aria-label="Marcos do caminho"></ol>
+        </div>
+      </section>
+    </div>
+
+    <section class="final">
+      <p class="rodape">Projeto de fã, sem vínculo com o Pokéidle<br />Esta página conta visitas de forma anônima (GoatCounter): sem cookies e sem guardar o seu IP.</p>
+      <p class="visitas" id="visitas" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></svg><b></b> <span>visitantes</span></p>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const botao = document.querySelector('.abre-menu');
+      const painel = document.getElementById('painel-secoes');
+      const aberto = () => botao.getAttribute('aria-expanded') === 'true';
+      const abre = (v) => { botao.setAttribute('aria-expanded', String(v)); botao.setAttribute('aria-label', v ? 'Fechar seções' : 'Abrir seções'); painel.classList.toggle('aberto', v); };
+      botao.addEventListener('click', () => abre(!aberto()));
+      painel.addEventListener('click', (e) => { if (e.target.closest('a')) abre(false) });
+      document.addEventListener('click', (e) => { if (aberto() && !painel.contains(e.target) && !botao.contains(e.target)) abre(false) });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && aberto()) { abre(false); botao.focus() } });
+      matchMedia('(min-width: 1181px)').addEventListener('change', (m) => { if (m.matches) abre(false) });
+    })();
+    if (!document.documentElement.classList.contains('embed')) (() => {
+      const guarda = (k) => { try { const c = JSON.parse(sessionStorage.getItem(k)); if (c && Date.now() - c.t < 600000) return c } catch {} return null };
+      const salva = (k, v) => { try { sessionStorage.setItem(k, JSON.stringify({ t: Date.now(), v })) } catch {} };
+      (async () => {
+        let c = guarda('pp-estrelas');
+        if (!c) { try { const r = await fetch('https://api.github.com/repos/iampiscis/pokepocket', { headers: { Accept: 'application/vnd.github+json' } }); if (r.ok) { c = { v: (await r.json()).stargazers_count }; salva('pp-estrelas', c.v) } } catch {} }
+        const n = c && Number(c.v);
+        if (!(n > 0)) return;
+        const txt = n.toLocaleString('pt-BR');
+        document.querySelectorAll('[data-estrelas]').forEach((el) => { el.textContent = txt; el.hidden = false });
+        document.querySelectorAll('.estrela').forEach((a) => a.setAttribute('aria-label', `Favoritar no GitHub, ${txt} ${n === 1 ? 'estrela' : 'estrelas'}`));
+      })();
+      (async () => {
+        const el = document.getElementById('visitas');
+        if (!el) return;
+        let c = guarda('pp-visitas');
+        if (!c) { try { const r = await fetch(`https://pokepocket.goatcounter.com/counter/TOTAL.json?start=2025-01-01&t=${Math.floor(Date.now() / 600000)}`); if (r.ok) { const j = await r.json(); c = { v: String(j.count_unique ?? j.count ?? '').trim().replace(/,/g, '.') }; salva('pp-visitas', c.v) } } catch {} }
+        const v = c && c.v;
+        if (!v || !/[1-9]/.test(v)) return;
+        el.querySelector('b').textContent = v;
+        el.querySelector('span').textContent = v === '1' ? 'visitante' : 'visitantes';
+        el.hidden = false;
+      })();
+    })();
+  </script>
+  <script>if (!document.documentElement.classList.contains('embed')) { const g = document.createElement('script'); g.async = true; g.src = 'https://gc.zgo.at/count.js'; g.dataset.goatcounter = 'https://pokepocket.goatcounter.com/count'; document.body.append(g) }</script>
+</body>
+</html>

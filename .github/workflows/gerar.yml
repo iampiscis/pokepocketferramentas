@@ -1,0 +1,46 @@
+name: Gerar páginas das ferramentas
+
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gerar
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: iampiscis/pokepocket
+          path: .origem
+          sparse-checkout: |
+            ferramentas/gerar-isolado.mjs
+            calculadora/index.html
+            nivel/index.html
+            tier/index.html
+            posicionamento/index.html
+          sparse-checkout-cone-mode: false
+
+      - name: Gerar
+        run: |
+          node .origem/ferramentas/gerar-isolado.mjs .origem .
+          rm -rf .origem
+
+      - name: Publicar se mudou
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "nada mudou"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: páginas geradas de novo a partir do pokepocket"
+          git push
