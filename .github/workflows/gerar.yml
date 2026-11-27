@@ -29,6 +29,8 @@ jobs:
             nivel/index.html
             tier/index.html
             posicionamento/index.html
+            monte-seu-time/index.html
+            ferramentas/inicio.html
           sparse-checkout-cone-mode: false
 
       - name: Gerar
