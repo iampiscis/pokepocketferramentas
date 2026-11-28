@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <base href="/pokepocket/calculadora/" />
+  <base href="/pokepocketferramentas/calculadora/" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ferramentas do Pokéidle · PokePocket</title>
   <meta name="description" content="Ferramentas grátis para o Pokéidle: calculadora de pokémon com nota, score e preço, calculadora de nível, tier PvP diário e posicionamento dos top." />
@@ -13,8 +13,8 @@
   <meta property="og:title" content="Ferramentas do Pokéidle · PokePocket" />
   <meta property="og:description" content="Calculadora de pokémon, nível, tier PvP e posicionamento dos top. Grátis, no navegador e sem login." />
   <meta property="og:url" content="https://iampiscis.github.io/pokepocketferramentas/" />
-  <meta property="og:image" content="https://iampiscis.github.io/pokepocket/assets/previa-ferramentas.png?v=202611281704" />
-  <meta name="twitter:image" content="https://iampiscis.github.io/pokepocket/assets/previa-ferramentas.png?v=202611281704" />
+  <meta property="og:image" content="https://iampiscis.github.io/pokepocketferramentas/assets/previa-ferramentas.png?v=202611281704" />
+  <meta name="twitter:image" content="https://iampiscis.github.io/pokepocketferramentas/assets/previa-ferramentas.png?v=202611281704" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="../assets/icone.png" />
   <link rel="stylesheet" href="../assets/ferramentas.css?v=20261128" />
@@ -255,12 +255,12 @@
               <a class="vitrine" href="/pokepocketferramentas/calculadora/" tabindex="-1" aria-hidden="true" data-goatcounter-click="inicio-ferr-calculadora" data-goatcounter-title="inicio-ferr-calculadora">
                 <div class="previa pv-calc">
                   <span class="pv-tag">Exemplo</span>
-                  <span class="pv-calc-arte"><img src="/pokepocket/calculadora/jogo/sprites-png/85006.png" alt="" decoding="async" draggable="false" onerror="this.style.visibility='hidden'" /><i>✦</i></span>
+                  <span class="pv-calc-arte"><img src="/pokepocketferramentas/calculadora/jogo/sprites-png/85006.png" alt="" decoding="async" draggable="false" onerror="this.style.visibility='hidden'" /><i>✦</i></span>
                   <span class="pv-calc-info">
                     <span class="pv-nome">Mega Charizard Y</span>
                     <span class="pv-nota"><b>8,412</b><small>/10</small><em>Lendário</em></span>
                     <span class="pv-linha">Score PvP <b style="color:#4ade80">742</b><i class="pv-barra" style="--p:.742"></i></span>
-                    <span class="pv-linha"><img src="/pokepocket/assets/gema.svg" alt="" draggable="false" />Preço justo <b style="color:#f9a8d4">48.500</b></span>
+                    <span class="pv-linha"><img src="/pokepocketferramentas/assets/gema.svg" alt="" draggable="false" />Preço justo <b style="color:#f9a8d4">48.500</b></span>
                   </span>
                 </div>
               </a>
@@ -402,7 +402,7 @@
       matchMedia('(min-width: 900px)').addEventListener('change', (m) => { if (m.matches) abre(false) });
     })();
     (() => {
-      const SPR = '/pokepocket/calculadora/jogo/sprites-png/';
+      const SPR = '/pokepocketferramentas/calculadora/jogo/sprites-png/';
       const COR_TIER = { 'S+': '#ff6fae', S: '#ff7676', 'S-': '#b495ff', 'A+': '#f5b13d', A: '#ffa25a', 'A-': '#ffd95e', 'B+': '#8c93f0', B: '#5f9ad6', 'B-': '#3fd4c6', C: '#9aa0aa', D: '#e4e7ec' };
       const COR_TIPO = { NORMAL: '#9a9a6e', FIRE: '#e8742a', WATER: '#4f7fe6', ELECTRIC: '#d9b51c', GRASS: '#5fae38', ICE: '#5ec2be', FIGHTING: '#b8302a', POISON: '#9a3c98', GROUND: '#c9a24c', FLYING: '#8f78e0', PSYCHIC: '#ec4b7d', BUG: '#94a61a', ROCK: '#a8952f', GHOST: '#6a4f8f', DRAGON: '#6a35ea', DARK: '#6a5345', STEEL: '#8c8cae', FAIRY: '#d0739f' };
       const PASSIVAS = [['🔥', 'Burn', 'FIRE'], ['☠️', 'Poison', 'POISON'], ['❄️', 'Freeze', 'ICE'], ['🌩️', 'Paralyze', 'ELECTRIC'], ['🌱', 'Leech Seed', 'GRASS'], ['🕳️', 'Dig', 'GROUND'], ['💫', 'Confusion', 'PSYCHIC'], ['👻', 'Fear', 'GHOST'], ['👊', 'Rock Smash', 'FIGHTING'], ['🌪️', 'Whirlwind', 'FLYING'], ['🌑', 'Assurance', 'DARK'], ['💗', 'Charm', 'FAIRY'], ['💚', 'Recover', 'NORMAL'], ['⛰️', 'Rocky Helmet', 'ROCK'], ['🌧️', 'Rain Dance', 'WATER'], ['🐝', 'Swarm', 'BUG'], ['🐉', 'Intimidate', 'DRAGON'], ['🔩', 'Iron Defense', 'STEEL']];
@@ -432,7 +432,7 @@
         return p;
       });
       passivas.append(...icones);
-      import('/pokepocket/monte-seu-time/icones.js').then((m) => {
+      import('/pokepocketferramentas/monte-seu-time/icones.js').then((m) => {
         if (typeof m.iconePassiva !== 'function') return;
         for (const p of icones) {
           const b = p.firstChild;
@@ -441,7 +441,7 @@
         }
       }).catch(() => {});
 
-      const tierP = pega('/pokepocket/tier/tier.json');
+      const tierP = pega('/pokepocketferramentas/tier/tier.json');
       tierP.then((t) => {
         const faixas = (t?.janelas?.dia?.tiers || []).filter((g) => g.itens?.length).slice(0, 4);
         if (!faixas.length) throw new Error('sem tier');
@@ -459,7 +459,7 @@
         pronto(caixa);
       }).catch(() => falhou('pv-tier', 'Tier de hoje indisponível no momento'));
 
-      Promise.all([pega('/pokepocket/posicionamento/posicionamento.json'), tierP.catch(() => null)]).then(([d, t]) => {
+      Promise.all([pega('/pokepocketferramentas/posicionamento/posicionamento.json'), tierP.catch(() => null)]).then(([d, t]) => {
         const j = Array.isArray(d?.jogadores) ? d.jogadores[0] : null;
         if (!j || !Array.isArray(j.pks) || !j.pks.length) throw new Error('sem formação');
         const tiers = new Map();

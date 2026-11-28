@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex" />
+<meta name="viewport" content="width=1200" />
+<title>Prévia do Tier PvP</title>
+<style>
+@font-face { font-family: "Lilita"; src: url("../assets/fontes/lilita.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; src: url("../assets/fontes/nunito.woff2") format("woff2"); font-weight: 200 1000; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body { position: relative; background: #0b0608; color: #fff6ef; font-family: "Nunito", sans-serif; }
+.fundo { position: absolute; inset: 0; background: radial-gradient(55% 70% at 72% 50%, #3d1f2c 0%, transparent 70%), radial-gradient(30% 30% at 12% 80%, rgba(120, 160, 255, 0.07), transparent 70%), #0b0608; }
+.fundo::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(1.4px 1.4px at 10% 20%, #fff 50%, transparent 51%), radial-gradient(1.4px 1.4px at 30% 65%, #cfd8ff 50%, transparent 51%), radial-gradient(1.4px 1.4px at 55% 35%, #fff 50%, transparent 51%), radial-gradient(1.4px 1.4px at 72% 80%, #fff 50%, transparent 51%), radial-gradient(1.4px 1.4px at 88% 12%, #ffe9c4 50%, transparent 51%); background-size: 240px 240px; opacity: 0.5; }
+.raios { position: absolute; left: 850px; top: 315px; width: 1100px; height: 1100px; margin: -550px 0 0 -550px; border-radius: 50%; background: repeating-conic-gradient(rgba(255, 233, 163, 0.05) 0deg 6deg, transparent 6deg 24deg); -webkit-mask: radial-gradient(circle, #000 10%, transparent 62%); mask: radial-gradient(circle, #000 10%, transparent 62%); }
+.moldura { position: absolute; inset: 14px; border-radius: 26px; border: 1px solid rgba(255, 233, 163, 0.16); }
+.esq { position: absolute; left: 58px; top: 0; bottom: 0; width: 400px; display: flex; flex-direction: column; justify-content: center; }
+.marca { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 32px; letter-spacing: -0.02em; }
+.marca img { width: 44px; height: 44px; }
+.marca .p { background: linear-gradient(100deg, #e2a93f, #ffe9a3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+h1 { margin-top: 18px; font-family: "Lilita"; font-weight: 400; font-size: 80px; line-height: 0.95; text-transform: uppercase; background: linear-gradient(180deg, #fffbe0 0%, #ffe066 40%, #ffb020 65%, #e8650f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 5px 0 #3b1208); }
+h1 span { display: block; background: linear-gradient(100deg, #fbcfe8, #ec4899 45%, #c084fc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.data { display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; margin-top: 26px; padding: 11px 20px; border-radius: 16px; background: linear-gradient(180deg, #ffe9a3, #e2a93f); color: #2a1a12; font-weight: 900; font-size: 21px; box-shadow: 0 5px 0 #7d5313; }
+.data svg { width: 22px; height: 22px; }
+.base { margin-top: 18px; font-size: 18px; font-weight: 800; color: #a88e86; }
+.base b { color: #e6c9b9; }
+.painel { position: absolute; left: 500px; top: 50%; width: 650px; padding: 14px; border-radius: 26px; transform: translateY(-50%); background: linear-gradient(180deg, #24131b, #150b10); box-shadow: 0 0 0 3px #480e1e, 0 0 0 6px #f1d3b7, 0 0 0 9px #bd6951, 0 14px 0 #722c3f, 0 36px 70px rgba(0, 0, 0, 0.6); display: grid; gap: 8px; }
+.faixa { --cor: #ff7ab8; display: grid; grid-template-columns: 64px 1fr; border-radius: 16px; overflow: hidden; background: linear-gradient(90deg, color-mix(in srgb, var(--cor) 14%, #150b10), #150b10 40%); box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--cor) 40%, transparent); }
+.faixa > b { display: grid; place-items: center; font-family: "Lilita"; font-weight: 400; font-size: 34px; color: #1a0d12; background: linear-gradient(180deg, color-mix(in srgb, var(--cor) 90%, #fff), var(--cor)); }
+.faixa.splus > b { background: linear-gradient(160deg, #ffe066 0%, #ffb020 38%, #ff4fa3 100%); }
+.cel { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; padding: 7px 8px; }
+.poke { display: grid; justify-items: center; align-content: start; gap: 2px; min-width: 0; }
+.poke i { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 14px; background: radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--cor) 26%, transparent), transparent 70%), rgba(255, 246, 239, 0.04); box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.12); }
+.poke img { max-width: 58px; max-height: 58px; image-rendering: pixelated; filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.55)); }
+.poke span { max-width: 100%; font-size: 12px; font-weight: 900; line-height: 1.15; text-align: center; color: #fff3df; }
+.mais { display: grid; place-items: center; align-self: center; height: 64px; border-radius: 14px; font-family: "Lilita"; font-size: 22px; color: #e6c9b9; background: rgba(255, 246, 239, 0.04); box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.12); }
+.pe { display: flex; justify-content: space-between; padding: 2px 6px 0; font-size: 14px; font-weight: 800; color: #a88e86; }
+.pe em { font-style: normal; color: #ffd34d; }
+</style>
+</head>
+<body>
+<div class="fundo"></div>
+<div class="raios"></div>
+<div class="moldura"></div>
+<div class="esq">
+  <div class="marca"><img src="../assets/icone.png" alt="" /><span><span class="p">Poke</span>Pocket</span></div>
+  <h1>Tier PvP<span>shiny</span></h1>
+  <span class="data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span id="data">Atualizado todo dia</span></span>
+  <p class="base" id="base"></p>
+</div>
+<div class="painel" id="painel"></div>
+<script type="module">
+const COR = { 'S+': '#ff5fa8', S: '#ff7ab8', 'S-': '#f9a8d4', 'A+': '#ff9f43', A: '#ffb86b', 'A-': '#ffd08a', 'B+': '#facc15', B: '#fde047', 'B-': '#fef08a', 'C+': '#60a5fa', C: '#93c5fd', 'C-': '#bfdbfe', D: '#a1a1aa' }
+const SPRITES = '../calculadora/jogo/sprites-png/'
+const POR_FAIXA = 6
+const ALTURA_MAX = 540
+const fmt = new Intl.NumberFormat('pt-BR')
+const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n }
+const num = (v) => v != null && v !== '' && Number.isFinite(Number(v))
+const cargas = []
+
+function sprite(p) {
+  const img = el('img')
+  img.alt = ''
+  const fila = [...new Set([p.looktype, p.lookNormal, 60000 + Number(p.speciesId)].filter(num).map(Number))].map((l) => `${SPRITES}${l}.png`)
+  cargas.push(new Promise((ok) => {
+    const proxima = () => { const u = fila.shift(); if (u) img.src = u; else { img.src = '../assets/pokebola.svg'; img.onerror = null; ok() } }
+    img.onload = ok
+    img.onerror = proxima
+    proxima()
+  }))
+  return img
+}
+
+function faixa(t) {
+  const f = el('div', `faixa${t.tier === 'S+' ? ' splus' : ''}`)
+  f.style.setProperty('--cor', COR[t.tier] || '#a1a1aa')
+  f.append(el('b', '', t.tier))
+  const cel = el('div', 'cel')
+  const itens = t.itens || []
+  const vistos = itens.length > POR_FAIXA ? POR_FAIXA - 1 : POR_FAIXA
+  for (const p of itens.slice(0, vistos)) {
+    const c = el('div', 'poke')
+    const i = el('i')
+    i.append(sprite(p))
+    c.append(i, el('span', '', p.nome))
+    cel.append(c)
+  }
+  if (itens.length > vistos) cel.append(el('div', 'mais', `+${itens.length - vistos}`))
+  f.append(cel)
+  return f
+}
+
+async function montar() {
+  const dados = await (await fetch('tier.json', { cache: 'no-cache' })).json()
+  const j = dados.janelas?.dia || dados
+  const g = new Date(dados.geradoEm)
+  if (!Number.isNaN(g.getTime())) document.getElementById('data').textContent = `Atualizado ${new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'America/Sao_Paulo' }).format(g)}`
+  const topo = j.topo ?? dados.topo
+  const base = []
+  if (typeof dados.recorte === 'string' && dados.recorte) base.push(dados.recorte)
+  else if (num(topo)) base.push(`top ${fmt.format(topo)}`)
+  if (num(j.partidas)) base.push(`${fmt.format(j.partidas)} partidas`)
+  const pBase = document.getElementById('base')
+  base.forEach((t, i) => { if (i) pBase.append(' · '); pBase.append(Object.assign(el('b'), { textContent: t })) })
+  const painel = document.getElementById('painel')
+  const pe = el('div', 'pe')
+  const assinatura = el('span')
+  assinatura.append('Tier PvP ', Object.assign(el('em'), { textContent: 'PokePocket' }))
+  pe.append(assinatura, el('span', '', 'iampiscis.github.io/pokepocket'))
+  painel.append(pe)
+  for (const t of (j.tiers || []).filter((t) => t.itens?.length)) {
+    const f = faixa(t)
+    painel.insertBefore(f, pe)
+    if (painel.offsetHeight > ALTURA_MAX) { f.remove(); break }
+  }
+  await Promise.all(cargas)
+  await document.fonts.ready
+}
+
+montar().catch(() => {}).finally(() => { document.body.dataset.pronto = '1' })
+</script>
+</body>
+</html>

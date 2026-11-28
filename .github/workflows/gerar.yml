@@ -24,20 +24,23 @@ jobs:
           repository: iampiscis/pokepocket
           path: .origem
           sparse-checkout: |
-            ferramentas/gerar-isolado.mjs
-            calculadora/index.html
-            nivel/index.html
-            tier/index.html
-            posicionamento/index.html
-            monte-seu-time/index.html
-            farm/index.html
-            shinies/index.html
-            ferramentas/inicio.html
+            /ferramentas/gerar-isolado.mjs
+            /ferramentas/inicio.html
+            /calculadora/
+            /assets/
+            !/assets/*.mp4
+            !/assets/prints/
+            /nivel/
+            /tier/
+            /posicionamento/
+            /monte-seu-time/
+            /farm/
+            /shinies/
           sparse-checkout-cone-mode: false
 
       - name: Gerar
         run: |
-          node .origem/ferramentas/gerar-isolado.mjs .origem .
+          bash .github/montar.sh .origem .
           rm -rf .origem
 
       - name: Publicar se mudou
