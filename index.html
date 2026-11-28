@@ -17,8 +17,8 @@
   <meta name="twitter:image" content="https://iampiscis.github.io/pokepocket/assets/previa-ferramentas.png?v=202611270007" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="../assets/icone.png" />
-  <link rel="stylesheet" href="../assets/ferramentas.css" />
-  <script src="../assets/ferramentas.js" defer></script>
+  <link rel="stylesheet" href="../assets/ferramentas.css?v=20261128" />
+  <script src="../assets/ferramentas.js?v=20261128" defer></script>
   <script>document.documentElement.classList.add('sem-vt'); document.documentElement.classList.add('so-ferr'); document.documentElement.dataset.isolado = '/pokepocketferramentas/'</script>
   <link rel="stylesheet" href="calc.css" />
   <style>
@@ -29,7 +29,10 @@
     .fatos li { display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px; border-radius: 999px; font-size: 13.5px; font-weight: 800; color: var(--suave); background: rgba(21, 11, 16, 0.62); border: 1px solid rgba(255, 233, 163, 0.14); }
     .fatos svg { width: 16px; height: 16px; color: var(--ouro); }
     .atalhos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 6px; margin: 14px auto 0; font-size: 13.5px; font-weight: 800; color: var(--apagado); }
-    .atalhos span { margin-right: 4px; }
+    .atalhos { gap: 8px; }
+    .at-grupo { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px; padding: 3px 4px 3px 12px; border-radius: 999px; background: rgba(255, 233, 163, 0.04); box-shadow: inset 0 0 0 1px rgba(255, 233, 163, 0.09); }
+    .at-grupo > span { margin-right: 4px; font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--apagado); }
+    @media (max-width: 560px) { .atalhos { gap: 6px; font-size: 12.5px; } .at-grupo { padding: 2px 2px 2px 9px; } .at-grupo > span { margin-right: 2px; font-size: 10px; } .atalhos a { padding: 4px 6px; } }
     .atalhos a { padding: 4px 10px; border-radius: 999px; color: var(--suave); text-decoration: none; transition: color 0.2s, background-color 0.2s; }
     .atalhos a:hover, .atalhos a:focus-visible { color: var(--ouro); background: rgba(255, 211, 77, 0.08); }
 
@@ -375,14 +378,9 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7M12 17v3.5"/></svg>Direto no navegador</li>
       </ul>
       <nav class="atalhos" aria-label="Atalhos para as ferramentas">
-        <span>Ir direto:</span>
-        <a href="/pokepocketferramentas/calculadora/">Calculadora</a>
-        <a href="/pokepocketferramentas/nivel/">Nível</a>
-        <a href="/pokepocketferramentas/tier/">Tier PvP</a>
-        <a href="/pokepocketferramentas/posicionamento/">Posicionamento</a>
-        <a href="/pokepocketferramentas/monte-seu-time/">Monte seu time</a>
-        <a href="/pokepocketferramentas/farm/">Top farm</a>
-        <a href="/pokepocketferramentas/shinies/">Shinies 24h</a>
+        <span class="at-grupo"><span>Seu pokémon</span><a href="/pokepocketferramentas/calculadora/">Calculadora</a><a href="/pokepocketferramentas/nivel/">Nível</a></span>
+        <span class="at-grupo"><span>PvP</span><a href="/pokepocketferramentas/tier/">Tier PvP</a><a href="/pokepocketferramentas/posicionamento/">Posicionamento</a><a href="/pokepocketferramentas/monte-seu-time/">Monte seu time</a></span>
+        <span class="at-grupo"><span>Servidor agora</span><a href="/pokepocketferramentas/farm/">Top farm</a><a href="/pokepocketferramentas/shinies/">Shinies 24h</a></span>
       </nav>
     </div>
 
